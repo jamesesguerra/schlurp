@@ -6,6 +6,7 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/src/ScrollTrigger';
 import Image from 'next/image';
+import Bottle from '@/app/ui/Bottle/Bottle';
 
 const Hero = () => {
   const container = useRef(null);
@@ -114,21 +115,19 @@ const Hero = () => {
 
   return (
     <section className={`${styles.hero_container}`} ref={container}>
-        <div className="container mx-auto pt-4 pb-10 relative z-100 bg-white">
-            <h3 className="font-bold text-9xl tracking-wide font-accent pb-5">
-                WE MAKE <br />
-                ALL NATURAL <br />
-                CHOCOLATE <br />
-                BARS. <br />
-            </h3>
+      <div className="container mx-auto pt-4 pb-10 relative z-100 bg-white">
+          <h3 className="font-bold text-9xl tracking-wide font-accent pb-5">
+              WE MAKE <br />
+              ALL NATURAL <br />
+              CHOCOLATE <br />
+              BARS. <br />
+          </h3>
 
-            <a href="" className="font-accent underline decoration-solid text-xl">READ ABOUT COPENHAGEN CHOCOLATE FACTORY</a>
-        </div>
+          <a href="" className="font-accent underline decoration-solid text-xl">READ ABOUT COPENHAGEN CHOCOLATE FACTORY</a>
+      </div>
 
-        <div className="fixed top-50 left-117 z-90" ref={bottleContainerRef}>
-          <Image src="/bottle.png" width={500} height={1000} alt="" />
-        </div>
-
+      <Bottle />
+        
       <div className="relative">
         <section className={`${styles.containerSmall} ${styles.blueGradient} py-5 border border-solid relative`} ref={blueRef}>
           <div className="left-20 absolute z-10 opacity-0" ref={blueTextRef}>
