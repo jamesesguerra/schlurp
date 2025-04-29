@@ -1,0 +1,25 @@
+.brandName {
+    transform: rotate(270deg);
+    transform-origin: 50px 35px;
+    /* z-index: 150; */
+}
+
+.links {
+    margin-top: 20px;
+    transform: rotate(270deg);
+    transform-origin: 50px 35px;
+    z-index: 150;
+    mix-blend-mode: screen;
+}
+
+.textWhite {
+    color: white;
+    mix-blend-mode: difference;
+    z-index: 149;
+}
+  
+.textBlack {
+    color: white;
+    mix-blend-mode: overlay;
+    z-index: 150;
+}

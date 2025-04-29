@@ -1,0 +1,37 @@
+.hero_container {
+    height: 80vh;
+}
+
+.containerSmall {
+    height: 65vh;
+}
+
+.containerBig {
+    height: 200vh;
+}
+
+.red {
+    background-color: #000000;
+}
+
+.blueGradient {
+    background: linear-gradient(90deg,rgba(18, 48, 130, 1) 0%, rgba(21, 77, 192, 1) 51%, rgba(18, 48, 130, 1) 100%);
+}
+
+.orange {
+    background-color: #ffffff;
+}
+
+.addBtn {
+    border: 2px solid oklch(68.5% 0.169 237.323);
+    width: 200px;
+    height: 70px;
+}
+
+.text64xl {
+    font-size: 18rem;
+}
+
+.detailContainer {
+    max-width: 900px;
+}

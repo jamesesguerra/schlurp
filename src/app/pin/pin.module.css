@@ -1,0 +1,23 @@
+.container {
+    height: 80vh;
+}
+
+.containerSmall {
+    height: 50vh;
+}
+
+.containerBig {
+    height: 200vh;
+}
+
+.red {
+    background-color: #000000;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.orange {
+    background-color: orange;
+}
