@@ -131,7 +131,7 @@ const Hero = () => {
 
       <div className="relative">
         <section className={`${styles.containerSmall} ${styles.blueGradient} py-5 border border-solid relative`} ref={blueRef}>
-          <div className="left-20 absolute z-10" ref={blueTextRef}>
+          <div className="left-20 absolute z-10 opacity-0" ref={blueTextRef}>
             <p className="font-accent text-5xl tracking-wide text-white mb-5">
               DARK CHOCOLATE <br />
               60% WITH SALTED<br />
