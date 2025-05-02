@@ -5,8 +5,14 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/src/ScrollTrigger';
 import Image from 'next/image';
 import clsx from 'clsx';
+import { Flavor } from '@/app/types/Flavor';
 
-const FlavorShowcase = ({ isFirst = false }) => {
+type FlavorShowcaseProps = {
+  flavor: Flavor;
+  isFirst?: boolean;
+};
+
+const FlavorShowcase: React.FC<FlavorShowcaseProps> = ({ flavor, isFirst = false }) => {
   const flavorBanner = useRef(null);
   const flavorBannerCopy = useRef(null);
   const detailsContainer = useRef(null);
@@ -101,13 +107,15 @@ const FlavorShowcase = ({ isFirst = false }) => {
 }, { scope: container });
 
   return (
+
     <div
       className={clsx('relative', { [styles.mt200]: !isFirst })}
       ref={container}
     >
       <section
-        className={`${styles.containerSmall} ${styles.blueGradient} py-5 border border-solid relative`}
+        className={`${styles.containerSmall} py-5 border border-solid relative`}
         ref={flavorBanner}
+        style={{ backgroundImage: `linear-gradient(90deg,${flavor.bannerColor} 0%, ${flavor.bannerColorLight ?? flavor.bannerColor} 51%, ${flavor.bannerColor} 100%)` }}
       >
         <div className="left-20 absolute z-10 opacity-0" ref={flavorBannerCopy}>
           <p className="font-accent text-5xl tracking-wide text-white mb-5">
@@ -135,7 +143,8 @@ const FlavorShowcase = ({ isFirst = false }) => {
       >
         <div className="container mx-auto" style={{ marginTop: "400px" }}>
           <div
-            className={`${styles.text64xl} font-accent text-blue-700 font-semibold tracking-wide`}
+            className={`${styles.text64xl} font-accent font-semibold tracking-wide`}
+            style={{ color: flavor.titleColor }}
           >
             <h3 ref={flavorFirstName}>SALTY</h3>
             <h3 ref={flavorSecondName} className="-mt-40">
@@ -149,33 +158,24 @@ const FlavorShowcase = ({ isFirst = false }) => {
           >
             <div className="flex flex-col basis-1/2 gap-20">
               <div>
-                <h3 className="font-accent text-4xl font-bold tracking-wide pb-6">
-                  SALTY FRED. RAISE THE BAR
-                </h3>
-                <p className="text-xl/8 font-serif font-semibold">
-                  Your taste buds will be thanking you the second the dark
-                  chocolate hits your tongue. And when the salted almonds set
-                  .in - they will simply never be the same again
-                </p>
+                <h3 className="font-accent text-4xl font-bold tracking-wide pb-6">{ flavor?.paragraphOneTitle }</h3>
+                <p className="text-xl/8 font-serif font-semibold">{ flavor?.paragraphOne }</p>
               </div>
 
               <div>
-                <h3 className="font-accent text-4xl font-bold tracking-wide pb-6">
-                  SWEET & SALTY = <br /> YIN AND YANG.
-                </h3>
-                <p className="text-xl/8 font-serif font-semibold">
-                  Dark chocolate 60% with salted almonds, known for their superb
-                  quality. The salty hint and the fruity chocolate truly make
-                  this the best of both worlds.
-                </p>
+                <h3
+                  className="font-accent text-4xl font-bold tracking-wide pb-6"
+                  dangerouslySetInnerHTML={{ __html: flavor?.paragraphTwoTitle || '' }}
+                />
+                <p className="text-xl/8 font-serif font-semibold">{ flavor?.paragraphTwo }</p>
               </div>
             </div>
 
             <div className="basis-1/2">
-              <h3 className="font-accent text-4xl font-bold tracking-wide pb-8">
-                40 G. OF DARK <br /> CHOCOLATE 60% <br /> WITH SALTED ALMONDS
-              </h3>
-
+              <h3
+                className="font-accent text-4xl font-bold tracking-wide pb-6"
+                dangerouslySetInnerHTML={{ __html: flavor?.paragraphThreeTitle || '' }}
+              />
               <div className="flex flex-col gap-4">
                 <div className="flex">
                   <div className="basis-3/4">

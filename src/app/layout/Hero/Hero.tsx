@@ -3,6 +3,7 @@
 import React from 'react'
 import Bottle from '@/app/ui/Bottle/Bottle';
 import FlavorShowcase from '@/app/ui/FlavorShowcase/FlavorShowcase';
+import { flavors } from '@/app/data/flavors';
 
 const Hero = () => {
  
@@ -22,8 +23,10 @@ const Hero = () => {
       <Bottle />
       
       <div className="space-y-[400px]">
-        <FlavorShowcase isFirst={true} />
-        <FlavorShowcase />
+        { flavors.map((flavor, index) => {
+            return (<FlavorShowcase isFirst={index === 0} flavor={flavor} />)
+          })
+        }
       </div>
     </section>
   )
