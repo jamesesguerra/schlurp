@@ -27,8 +27,8 @@ const Bottle = () => {
 
     return (
         <div ref={containerRef}>
-            <div className="fixed top-50 left-117 z-90" ref={bottleContainerRef}>
-                <Image src="/bottle.png" width={500} height={1000} alt="" />
+            <div className="fixed top-[50vh] lg:top-50 left-1/2 -translate-x-1/2 z-90" ref={bottleContainerRef}>
+                <Image src="/bottle.png" width={500} height={1000} alt="a bottle of Schlurp" />
             </div>
         </div>
     );

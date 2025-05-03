@@ -8,9 +8,9 @@ import { flavors } from '@/app/data/flavors';
 const Hero = () => {
  
   return (
-    <section>
-      <div className="container mx-auto pt-4 pb-10 relative z-100 bg-white">
-          <h3 className="font-bold text-9xl tracking-wide font-accent pb-5">
+    <div>
+      <section className="container mx-auto pt-4 pb-10 relative z-100 max-w-none bg-white px-5 lg:px-0">
+          <h3 className="font-bold text-8xl md:text-9xl tracking-wide font-accent pb-5 h-[55dvh] lg:h-auto">
               WE MAKE <br />
               ALL NATURAL <br />
               CHOCOLATE <br />
@@ -18,17 +18,17 @@ const Hero = () => {
           </h3>
 
           <a href="" className="font-accent underline decoration-solid text-xl">READ ABOUT COPENHAGEN CHOCOLATE FACTORY</a>
-      </div>
+      </section>
 
       <Bottle />
       
-      <div className="space-y-[400px]">
+      <section className="space-y-[400px]">
         { flavors.map((flavor, index) => {
-            return (<FlavorShowcase isFirst={index === 0} flavor={flavor} />)
+            return (<FlavorShowcase isFirst={index === 0} flavor={flavor} key={index} />)
           })
         }
-      </div>
-    </section>
+      </section>
+    </div>
   )
 }
 

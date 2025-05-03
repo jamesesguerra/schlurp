@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Navbar from "./layout/Navbar/Navbar";
 import "./globals.css"; 
 import { bebas, cormorant } from "./fonts/fonts";
+import MobileNavbar from "./layout/MobileNavbar/MobileNavbar";
 
 export const metadata: Metadata = {
   title: {
@@ -24,7 +25,12 @@ export default function RootLayout({
       <head>
       </head>
       <body className={`antialiased ${bebas.variable} ${cormorant.variable}`}>
-        <Navbar />
+        <span className="hidden lg:block">
+          <Navbar />
+        </span>
+        <span className="block lg:hidden">
+          <MobileNavbar />
+        </span>
         {children}
       </body>
     </html>
