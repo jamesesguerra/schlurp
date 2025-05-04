@@ -8,7 +8,7 @@ const Hero = () => {
     <div>
       <section
         className="container mx-auto pt-4 pb-10 relative z-100 max-w-none bg-white px-5 lg:px-0 h-[30rem] md:h-[40rem] lg:h-auto 2xl:h-[45rem]">
-          <h3 className="font-bold text-7xl md:text-9xl lg:tracking-wide font-accent pb-5">
+          <h3 className="font-bold text-7xl md:text-9xl tracking-tight lg:tracking-wide font-accent pb-5">
               WE MAKE <br />
               ALL NATURAL <br />
               CHOCOLATE <br />

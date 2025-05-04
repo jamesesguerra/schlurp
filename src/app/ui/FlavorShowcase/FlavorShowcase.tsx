@@ -70,7 +70,7 @@ const FlavorShowcase: React.FC<FlavorShowcaseProps> = ({ flavor, isFirst = false
         <div className="lg:absolute lg:inset-0">
           <div className="container mx-auto relative">
             <div className="left-5 lg:left-0 lg:top-5 absolute z-10 opacity-0" ref={flavorBannerCopy}>
-              <p className="font-accent text-5xl lg:tracking-wide text-white mb-5">
+              <p className="font-accent text-5xl tracking-tight lg:tracking-wide text-white mb-5">
                 DARK CHOCOLATE <br />
                 60% WITH SALTED
                 <br />
@@ -99,7 +99,7 @@ const FlavorShowcase: React.FC<FlavorShowcaseProps> = ({ flavor, isFirst = false
           <div className="inset-0">
             <div className="container mx-auto relative" style={{ marginTop: "400px" }}>
               <div
-                className={`text-[10rem] md:text-[18rem] font-accent font-semibold lg:tracking-wide lg:left-0 px-5`}
+                className={`text-[10rem] md:text-[18rem] font-accent font-semibold tracking-tight lg:tracking-wide lg:left-0 px-5`}
                 style={{ color: flavor.titleColor }}
               >
                 <h3 ref={flavorFirstName}>{ flavor.name.split(" ")[0] }</h3>
@@ -118,7 +118,7 @@ const FlavorShowcase: React.FC<FlavorShowcaseProps> = ({ flavor, isFirst = false
 
                   <div>
                     <h3
-                      className="font-accent text-4xl font-bold lg:tracking-wide pb-6"
+                      className="font-accent text-4xl font-bold tracking-tight lg:tracking-wide pb-6"
                       dangerouslySetInnerHTML={{ __html: flavor?.paragraphTwoTitle || '' }}
                     />
                     <p className="text-xl/8 font-serif font-semibold">{ flavor?.paragraphTwo }</p>
@@ -127,7 +127,7 @@ const FlavorShowcase: React.FC<FlavorShowcaseProps> = ({ flavor, isFirst = false
 
                 <div className="basis-1/2">
                   <h3
-                    className="font-accent text-4xl font-bold lg:tracking-wide pb-6"
+                    className="font-accent text-4xl font-bold tracking-tight lg:tracking-wide pb-6"
                     dangerouslySetInnerHTML={{ __html: flavor?.paragraphThreeTitle || '' }}
                   />
                   <div className="flex flex-col gap-4">
