@@ -6,6 +6,7 @@ import ScrollTrigger from 'gsap/src/ScrollTrigger';
 import Image from 'next/image';
 import clsx from 'clsx';
 import { Flavor } from '@/app/types/Flavor';
+import { flavorDesktopAnimations, flavorMobileAnimations } from './flavor-showcase-tweens';
 
 type FlavorShowcaseProps = {
   flavor: Flavor;
@@ -25,87 +26,33 @@ const FlavorShowcase: React.FC<FlavorShowcaseProps> = ({ flavor, isFirst = false
   gsap.registerPlugin(ScrollTrigger);
 
   useGSAP(() => {
-    gsap.to(flavorBannerCopy.current, {
-        scrollTrigger: {
-            trigger: flavorBanner.current,
-            endTrigger: detailsContainer.current,
-            pinSpacing: false,
-            pin: flavorBannerCopy.current,
-            scrub: true,
-            anticipatePin: 1,
-        },
-    });
+    const mm = gsap.matchMedia();
 
-    gsap.to(detailsContainer.current, {
-      scrollTrigger: {
-        trigger: detailsContainer.current,
-        start: "top 100%",
-        scrub: true,
-      },
-      y: -290
-    });
-
-    gsap.to(flavorFirstName.current,
-      {
-        scrollTrigger: {
-          trigger: flavorFirstName.current,
-          scrub: true,
-          start: "top-=400 80%",
-        },
-        y: -400,
-        duration: 1.1
+    mm.add("(max-width: 1023px)", () => {
+      flavorMobileAnimations({
+        flavorBanner,
+        flavorBannerCopy,
+        detailsContainer,
+        flavorFirstName,
+        flavorSecondName,
+        ingredientsImage,
+        flavorDetails,
       });
-
-    gsap.to(flavorSecondName.current,
-      {
-        scrollTrigger: {
-          trigger: flavorSecondName.current,
-          scrub: true,
-          start: "top-=420 80%",
-        },
-        y: -550,
-        duration: 1.2
-      });
-
-    gsap.to(ingredientsImage.current, {
-      scrollTrigger: {
-        trigger: ingredientsImage.current,
-        scrub: true,
-        start: "top-=300 80%",
-        end: "+=1700px",
-      },
-      y: -1000,
-      duration: 0.1,
     })
 
-    gsap.to(flavorDetails.current,
-      {
-        scrollTrigger: {
-          trigger: flavorDetails.current,
-          scrub: true,
-          start: "top-=450 80%",
-          end: "+=500px",
-        },
-        y: -350,
-        duration: 1.2
+    mm.add("(min-width: 1024px)", () => {
+      flavorDesktopAnimations({
+        flavorBanner,
+        flavorBannerCopy,
+        detailsContainer,
+        flavorFirstName,
+        flavorSecondName,
+        ingredientsImage,
+        flavorDetails,
       });
+    });
 
-    gsap.fromTo(flavorBannerCopy.current, 
-      {
-        opacity: 0,
-        marginTop: "-75px"
-      }, 
-      {
-        opacity: 1,
-        marginTop: "0px",
-        duration: 0.6,
-        scrollTrigger: {
-          trigger: flavorBannerCopy.current,
-          start: "top-=100 20%",
-          end: "+=300px",
-        }
-      });
-
+    return () => mm.revert();
 }, { scope: container });
 
   return (
