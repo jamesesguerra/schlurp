@@ -1,4 +1,4 @@
-import { Bebas_Neue, Cormorant_Garamond } from "next/font/google";
+import { Bebas_Neue, EB_Garamond } from "next/font/google";
 
 export const bebas = Bebas_Neue({
     subsets: ['latin'],
@@ -7,7 +7,7 @@ export const bebas = Bebas_Neue({
     display: 'swap',
   });
   
-export const cormorant = Cormorant_Garamond({
+export const garamond = EB_Garamond({
     subsets: ['latin'],
     variable: '--font-serif',
     weight: '400',
