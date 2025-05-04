@@ -35,7 +35,8 @@ const FlavorShowcase: React.FC<FlavorShowcaseProps> = ({ flavor, isFirst = false
             pin: flavorBannerCopy.current,
             scrub: true,
             anticipatePin: 1,
-            markers: true
+            markers: true,
+            invalidateOnRefresh: true,
         },
     });
 
