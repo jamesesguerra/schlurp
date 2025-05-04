@@ -25,8 +25,6 @@ const FlavorShowcase: React.FC<FlavorShowcaseProps> = ({ flavor, isFirst = false
   gsap.registerPlugin(ScrollTrigger);
 
   useGSAP(() => {
-    const isMobile = window.innerWidth <= 1024;
-
     gsap.to(flavorBannerCopy.current, {
         scrollTrigger: {
             trigger: flavorBanner.current,
@@ -35,8 +33,6 @@ const FlavorShowcase: React.FC<FlavorShowcaseProps> = ({ flavor, isFirst = false
             pin: flavorBannerCopy.current,
             scrub: true,
             anticipatePin: 1,
-            markers: true,
-            invalidateOnRefresh: true,
         },
     });
 
