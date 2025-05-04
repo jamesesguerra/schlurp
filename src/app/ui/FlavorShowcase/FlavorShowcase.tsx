@@ -27,10 +27,11 @@ const FlavorShowcase: React.FC<FlavorShowcaseProps> = ({ flavor, isFirst = false
     gsap.to(flavorBannerCopy.current, {
         scrollTrigger: {
             trigger: flavorBannerCopy.current,
+            endTrigger: detailsContainer.current,
             start: "top-=19 top",
             pinSpacing: false,
             pin: flavorBannerCopy.current,
-            scrub: true,
+            scrub: true
         },
     });
 
@@ -163,13 +164,13 @@ const FlavorShowcase: React.FC<FlavorShowcaseProps> = ({ flavor, isFirst = false
               >
                 <div className="flex flex-col basis-1/2 gap-20">
                   <div>
-                    <h3 className="font-accent text-4xl font-bold tracking-wide pb-6">{ flavor?.paragraphOneTitle }</h3>
+                    <h3 className="font-accent text-4xl font-bold lg: pb-6">{ flavor?.paragraphOneTitle }</h3>
                     <p className="text-xl/8 font-serif font-semibold">{ flavor?.paragraphOne }</p>
                   </div>
 
                   <div>
                     <h3
-                      className="font-accent text-4xl font-bold tracking-wide pb-6"
+                      className="font-accent text-4xl font-bold lg:tracking-wide pb-6"
                       dangerouslySetInnerHTML={{ __html: flavor?.paragraphTwoTitle || '' }}
                     />
                     <p className="text-xl/8 font-serif font-semibold">{ flavor?.paragraphTwo }</p>
@@ -178,7 +179,7 @@ const FlavorShowcase: React.FC<FlavorShowcaseProps> = ({ flavor, isFirst = false
 
                 <div className="basis-1/2">
                   <h3
-                    className="font-accent text-4xl font-bold tracking-wide pb-6"
+                    className="font-accent text-4xl font-bold lg:tracking-wide pb-6"
                     dangerouslySetInnerHTML={{ __html: flavor?.paragraphThreeTitle || '' }}
                   />
                   <div className="flex flex-col gap-4">
