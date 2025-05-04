@@ -99,7 +99,7 @@ const FlavorShowcase: React.FC<FlavorShowcaseProps> = ({ flavor, isFirst = false
           <div className="inset-0">
             <div className="container mx-auto relative" style={{ marginTop: "400px" }}>
               <div
-                className={`text-[10rem] md:text-[18rem] font-accent font-semibold tracking-tight lg:tracking-wide lg:left-0 px-5`}
+                className={`text-[10rem] lg:text-[18rem] font-accent font-semibold tracking-tight lg:tracking-wide lg:left-0 px-5`}
                 style={{ color: flavor.titleColor }}
               >
                 <h3 ref={flavorFirstName}>{ flavor.name.split(" ")[0] }</h3>
@@ -113,7 +113,7 @@ const FlavorShowcase: React.FC<FlavorShowcaseProps> = ({ flavor, isFirst = false
                 <div className="flex flex-col basis-1/2 gap-20">
                   <div>
                     <h3 className="font-accent text-4xl font-bold lg: pb-6">{ flavor?.paragraphOneTitle }</h3>
-                    <p className="text-xl/8 font-serif font-semibold">{ flavor?.paragraphOne }</p>
+                    <p className="text-xl/8 font-serif tracking-tighter font-semibold">{ flavor?.paragraphOne }</p>
                   </div>
 
                   <div>
@@ -180,7 +180,8 @@ const FlavorShowcase: React.FC<FlavorShowcaseProps> = ({ flavor, isFirst = false
           </div>
 
           <div className="absolute top-50 z-50" ref={ingredientsImage}>
-            <Image width={4080} height={3613} alt="" src="/choco-banner.png" />
+            <Image width={4080} height={3613} alt="" src="/choco-banner.png" className="hidden lg:block" />
+            <Image width={2259} height={4080} alt="" src="/choco-banner-mobile.png" className="block lg:hidden" />
           </div>
         </div>
       </section>

@@ -151,7 +151,6 @@ export function flavorMobileAnimations(
         trigger: flavorFirstName.current,
         scrub: true,
         start: "top-=400 80%",
-        markers: true
       },
       y: -300,
       duration: 1.1,
@@ -174,7 +173,7 @@ export function flavorMobileAnimations(
         start: "top-=300 80%",
         end: "+=700px",
       },
-      y: -1000,
+      y: -400,
       duration: 0.1,
     });
   

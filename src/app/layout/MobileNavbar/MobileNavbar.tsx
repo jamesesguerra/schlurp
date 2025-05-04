@@ -4,7 +4,7 @@ const MobileNavbar = () => {
   return (
     <nav className="container mx-auto px-5 py-5">
       <div className="flex justify-between items-center">
-        <span className="font-serif font-bold text-3xl">Simply Chocolate</span>
+        <span className="tracking-tight md:tracking-normal font-serif font-bold text-3xl">Simply Chocolate</span>
 
         <div>
           <svg
