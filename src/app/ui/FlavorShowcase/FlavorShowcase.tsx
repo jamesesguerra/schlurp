@@ -24,10 +24,6 @@ const FlavorShowcase: React.FC<FlavorShowcaseProps> = ({ flavor, isFirst = false
 
   gsap.registerPlugin(ScrollTrigger);
 
-  window.addEventListener("resize", () => {
-    ScrollTrigger.refresh();
-  });
-
   useGSAP(() => {
     gsap.to(flavorBannerCopy.current, {
         scrollTrigger: {
