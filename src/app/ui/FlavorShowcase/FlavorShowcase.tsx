@@ -233,7 +233,7 @@ const FlavorShowcase: React.FC<FlavorShowcaseProps> = ({ flavor, isFirst = false
           </div>
 
           <div className="absolute top-50 z-50" ref={ingredientsImage}>
-            <Image width={1920} height={1500} alt="" src="/choco-banner.png" />
+            <Image width={4080} height={3613} alt="" src="/choco-banner.png" />
           </div>
         </div>
       </section>
