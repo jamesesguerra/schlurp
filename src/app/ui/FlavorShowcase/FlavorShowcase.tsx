@@ -150,13 +150,11 @@ const FlavorShowcase: React.FC<FlavorShowcaseProps> = ({ flavor, isFirst = false
           <div className="inset-0">
             <div className="container mx-auto relative" style={{ marginTop: "400px" }}>
               <div
-                className={`text-[14rem] md:text-[18rem] font-accent font-semibold tracking-wide lg:left-0 px-5`}
+                className={`text-[12rem] md:text-[18rem] font-accent font-semibold lg:tracking-wide lg:left-0 px-5`}
                 style={{ color: flavor.titleColor }}
               >
-                <h3 ref={flavorFirstName}>SALTY</h3>
-                <h3 ref={flavorSecondName} className="-mt-40">
-                  FRED
-                </h3>
+                <h3 ref={flavorFirstName}>{ flavor.name.split(" ")[0] }</h3>
+                <h3 ref={flavorSecondName} className="-mt-40">{ flavor.name.split(" ")[1] }</h3>
               </div>
 
               <div
