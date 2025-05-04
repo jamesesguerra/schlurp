@@ -23,10 +23,13 @@ const FlavorShowcase: React.FC<FlavorShowcaseProps> = ({ flavor, isFirst = false
   const container = useRef(null);
 
   gsap.registerPlugin(ScrollTrigger);
+
   useGSAP(() => {
+    const isMobile = window.innerWidth <= 1024;
+
     gsap.to(flavorBannerCopy.current, {
         scrollTrigger: {
-            trigger: flavorBanner.current,
+            start: `${isMobile ? 'top' : 'top-=19'} top`,
             endTrigger: detailsContainer.current,
             pinSpacing: false,
             pin: flavorBannerCopy.current,
@@ -150,7 +153,7 @@ const FlavorShowcase: React.FC<FlavorShowcaseProps> = ({ flavor, isFirst = false
           <div className="inset-0">
             <div className="container mx-auto relative" style={{ marginTop: "400px" }}>
               <div
-                className={`text-[12rem] md:text-[18rem] font-accent font-semibold lg:tracking-wide lg:left-0 px-5`}
+                className={`text-[10rem] md:text-[18rem] font-accent font-semibold lg:tracking-wide lg:left-0 px-5`}
                 style={{ color: flavor.titleColor }}
               >
                 <h3 ref={flavorFirstName}>{ flavor.name.split(" ")[0] }</h3>
