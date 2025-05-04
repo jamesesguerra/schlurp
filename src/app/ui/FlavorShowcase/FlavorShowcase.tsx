@@ -29,7 +29,7 @@ const FlavorShowcase: React.FC<FlavorShowcaseProps> = ({ flavor, isFirst = false
 
     gsap.to(flavorBannerCopy.current, {
         scrollTrigger: {
-            start: `${isMobile ? 'top-=30' : 'top-=19'} top`,
+            start: `${isMobile ? 'top-=10' : 'top-=19'} top`,
             endTrigger: detailsContainer.current,
             pinSpacing: false,
             pin: flavorBannerCopy.current,
