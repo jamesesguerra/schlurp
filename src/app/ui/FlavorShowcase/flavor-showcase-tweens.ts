@@ -135,7 +135,6 @@ export function flavorMobileAnimations(
         pin: flavorBannerCopy.current,
         scrub: true,
         id: `${Math.random()}`,
-        markers: true
       },
     });
   
@@ -183,10 +182,10 @@ export function flavorMobileAnimations(
       scrollTrigger: {
         trigger: flavorDetails.current,
         scrub: true,
-        start: "top-=450 80%",
-        end: "+=1500px",
+        start: "top-=200 80%",
+        end: "+=600px",
       },
-      y: -350,
+      y: -200,
       duration: 1.2,
     });
   

@@ -61,7 +61,7 @@ const FlavorShowcase: React.FC<FlavorShowcaseProps> = ({ flavor, isFirst = false
       ref={container}
     >
       <section
-        className="h-[65dvh] py-5 relative"
+        className="h-[33rem] lg:h-[65dvh] py-5 relative"
         ref={flavorBanner}
         style={{ backgroundImage: `linear-gradient(90deg,${flavor.bannerColor} 0%, ${flavor.bannerColorLight ?? flavor.bannerColor} 51%, ${flavor.bannerColor} 100%)` }}
       >
