@@ -26,10 +26,6 @@ const Hero = () => {
           })
         }
       </section>
-
-      <section className="min-h-[100dvh] pt-[3000px] border border-solid">
-        <h1 className="text-9xl">hello world</h1>
-      </section>
     </div>
   )
 }

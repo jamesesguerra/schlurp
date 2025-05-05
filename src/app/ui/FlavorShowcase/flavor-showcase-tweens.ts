@@ -28,10 +28,10 @@ export function flavorDesktopAnimations(
     scrollTrigger: {
       trigger: flavorBanner.current,
       endTrigger: detailsContainer.current,
+      end: () => `top top`,
       pinSpacing: false,
       pin: flavorBannerCopy.current,
-      scrub: true,
-      anticipatePin: 1,
+      scrub: true
     },
   });
 
@@ -130,6 +130,7 @@ export function flavorMobileAnimations(
       scrollTrigger: {
         trigger: flavorBanner.current,
         endTrigger: detailsContainer.current,
+        end: () => `top top`,
         pinSpacing: false,
         pin: flavorBannerCopy.current,
         scrub: true,

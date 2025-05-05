@@ -18,7 +18,6 @@ export default function Home() {
             scrollTrigger: {
                 trigger: boxRef.current,
                 start: "top center",
-                markers: true,
                 toggleActions: "restart pause reverse pause",
                 scrub: 2,
                 pin: true
