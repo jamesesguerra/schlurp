@@ -56,13 +56,12 @@ const FlavorShowcase: React.FC<FlavorShowcaseProps> = ({ flavor, isFirst = false
 }, { scope: container });
 
   return (
-
     <div
       className={clsx('relative', { [styles.mt200]: !isFirst })}
       ref={container}
     >
       <section
-        className={`${styles.containerSmall} py-5 relative`}
+        className="h-[65dvh] py-5 relative"
         ref={flavorBanner}
         style={{ backgroundImage: `linear-gradient(90deg,${flavor.bannerColor} 0%, ${flavor.bannerColorLight ?? flavor.bannerColor} 51%, ${flavor.bannerColor} 100%)` }}
       >
@@ -77,12 +76,20 @@ const FlavorShowcase: React.FC<FlavorShowcaseProps> = ({ flavor, isFirst = false
                 ALMONDS <br />
               </p>
 
-              <span className="font-accent text-sky-500 text-2xl">2.55 PHP</span>
-
-              <div
-                className={`${styles.addBtn} flex justify-center items-center mt-10`}
+              <span
+                className="font-accent text-2xl"
+                style={{ color: flavor.bannerAccentColor }}
               >
-                <span className="font-accent text-sky-500 text-2xl">
+                2.55 PHP
+              </span>
+              <div
+                className="flex justify-center items-center mt-10 w-[200px] h-[70px]"
+                style={{ border: `2px solid ${flavor.bannerAccentColor}` }}
+              >
+                <span
+                  className="font-accent text-2xl"
+                  style={{ color: flavor.bannerAccentColor }}
+                >
                   ADD TO BOX
                 </span>
               </div>

@@ -44,6 +44,7 @@ export function bottleDesktopAnimations(
         start: "top+=1500 20%",
         end: "bottom+=1400 center",
         scrub: true,
+        markers: true,
         onUpdate: (self) => {
           if (!bottle?.current) return;
       

@@ -1,17 +1,3 @@
-.containerSmall {
-    height: 65vh;
-}
-
-.addBtn {
-    border: 2px solid oklch(68.5% 0.169 237.323);
-    width: 200px;
-    height: 70px;
-}
-
-.text64xl {
-    font-size: 18rem;
-}
-
 .mt200 {
     padding-top: 1000px;
 }

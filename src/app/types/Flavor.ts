@@ -3,6 +3,7 @@ export interface Flavor {
     bannerColor: string;
     bannerColorLight?: string;
     backgroundImage?: string;
+    bannerAccentColor?: string;
     titleColor: string;
     paragraphOneTitle?: string;
     paragraphOne?: string;
