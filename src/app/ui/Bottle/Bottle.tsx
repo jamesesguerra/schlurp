@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 import Image from 'next/image';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
@@ -14,15 +14,17 @@ const Bottle = () => {
   const bottle = useRef(null);
   const containerRef = useRef(null);
 
+  const [flavorSrc, setFlavorSrc] = useState('/blue-bottle.png');
+
   useGSAP(() => {
     const mm = gsap.matchMedia();
 
     mm.add("(max-width: 1023px)", () => {
-      bottleMobileAnimations({ bottleContainer })
+      bottleMobileAnimations({ bottleContainer, bottle, setFlavorSrc })
     });
 
     mm.add("(min-width: 1024px)", () => {
-      bottleDesktopAnimations({ bottleContainer, bottle })
+      bottleDesktopAnimations({ bottleContainer, bottle, setFlavorSrc })
     });
    
   }, { scope: containerRef });
@@ -35,7 +37,7 @@ const Bottle = () => {
         >
           <Image
             className="backface-visible"
-            src="/bottle.png"
+            src={flavorSrc}
             width={500}
             height={1000}
             alt="a bottle of Schlurp"
