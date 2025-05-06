@@ -16,34 +16,44 @@ const Bottle = () => {
 
   const [flavorSrc, setFlavorSrc] = useState('/blue-bottle.png');
 
-  useGSAP(() => {
-    const mm = gsap.matchMedia();
+  useGSAP(
+    (context) => {
+      const mm = gsap.matchMedia();
 
-    mm.add("(max-width: 1023px)", () => {
-      bottleMobileAnimations({ bottleContainer, bottle, setFlavorSrc })
-    });
+      // Defer animations until DOM is fully mounted
+      requestAnimationFrame(() => {
+        mm.add("(max-width: 1023px)", () => {
+          bottleMobileAnimations({ bottleContainer, bottle, setFlavorSrc });
+        });
 
-    mm.add("(min-width: 1024px)", () => {
-      bottleDesktopAnimations({ bottleContainer, bottle, setFlavorSrc })
-    });
-   
-  }, { scope: containerRef });
+        mm.add("(min-width: 1024px)", () => {
+          bottleDesktopAnimations({ bottleContainer, bottle, setFlavorSrc });
+        });
+
+        ScrollTrigger.refresh(); // ensure ScrollTrigger recalculates positions
+      });
+
+      return () => mm.revert(); // clean up on unmount
+    },
+    { scope: containerRef, revertOnUpdate: true }
+  );
 
   return (
     <div ref={containerRef}>
-        <div
-          className="fixed top-[25rem] lg:top-50 2xl:top-[20rem] left-1/2 -translate-x-1/2 z-90 perspective-dramatic"
-          ref={bottleContainer}
-        >
-          <Image
-            className="backface-visible"
-            src={flavorSrc}
-            width={500}
-            height={1000}
-            alt="a bottle of Schlurp"
-            ref={bottle}
-          />
-        </div>
+      <div
+        className="fixed top-[25rem] lg:top-50 2xl:top-[20rem] left-1/2 -translate-x-1/2 z-90 perspective-dramatic"
+        ref={bottleContainer}
+      >
+        <Image
+          className="backface-visible"
+          src={flavorSrc}
+          width={500}
+          height={1000}
+          alt="a bottle of Schlurp"
+          ref={bottle}
+          id="bottle"
+        />
+      </div>
     </div>
   );
 };

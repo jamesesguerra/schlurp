@@ -11,9 +11,10 @@ import { flavorDesktopAnimations, flavorMobileAnimations } from './flavor-showca
 type FlavorShowcaseProps = {
   flavor: Flavor;
   isFirst?: boolean;
+  index: number;
 };
 
-const FlavorShowcase: React.FC<FlavorShowcaseProps> = ({ flavor, isFirst = false }) => {
+const FlavorShowcase: React.FC<FlavorShowcaseProps> = ({ flavor, isFirst = false, index }) => {
   const flavorBanner = useRef(null);
   const flavorBannerCopy = useRef(null);
   const detailsContainer = useRef(null);
@@ -59,6 +60,7 @@ const FlavorShowcase: React.FC<FlavorShowcaseProps> = ({ flavor, isFirst = false
     <div
       className={clsx('relative', { [styles.mt200]: !isFirst })}
       ref={container}
+      id={`flavor-${index}`}
     >
       <section
         className="h-[33rem] lg:h-[65dvh] py-5 relative"
@@ -69,12 +71,10 @@ const FlavorShowcase: React.FC<FlavorShowcaseProps> = ({ flavor, isFirst = false
         <div className="lg:absolute lg:inset-0">
           <div className="container mx-auto relative">
             <div className="left-5 lg:left-0 lg:top-5 absolute z-10 opacity-0" ref={flavorBannerCopy}>
-              <p className="font-accent text-5xl tracking-tight lg:tracking-wide text-white mb-5">
-                DARK CHOCOLATE <br />
-                60% WITH SALTED
-                <br />
-                ALMONDS <br />
-              </p>
+              <p
+                className="font-accent text-5xl tracking-tight lg:tracking-wide text-white mb-5"
+                dangerouslySetInnerHTML={{ __html: flavor?.flavorDescription || '' }}
+              />
 
               <span
                 className="font-accent text-2xl"

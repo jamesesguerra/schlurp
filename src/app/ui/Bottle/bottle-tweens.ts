@@ -1,5 +1,6 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { flavors } from "@/app/data/flavors";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,21 +24,6 @@ export function bottleDesktopAnimations(
         y: -75
     });
 
-    // tl
-    // .to(bottle.current, {
-    //     scrollTrigger: {
-    //       trigger: bottle.current,
-    //       start: "top+=1000 20%",
-    //       end: "bottom+=1000 center",
-    //       scrub: true,
-    //     },
-    //     scaleX: -1,
-    //     z: 10,
-    //     duration: 0.5,
-    //     ease: "power1.in"
-    // })
-
-
     gsap.to(bottle.current, {
       scrollTrigger: {
         trigger: bottle.current,
@@ -57,8 +43,6 @@ export function bottleDesktopAnimations(
       scale: 0.05,
       ease: "power1.inOut"
     });
-    
-      
 }
 
 export function bottleMobileAnimations(
@@ -81,39 +65,41 @@ export function bottleMobileAnimations(
         y: -75
     });
 
-    // tl
-    // .to(bottle.current, {
-    //     scrollTrigger: {
-    //       trigger: bottle.current,
-    //       start: "top+=700 20%",
-    //       end: "bottom+=1000 center",
-    //       scrub: true
-    //     },
-    //     scaleX: -1,
-    //     duration: 2,
-    //     ease: "power1.in"
-    // })
-
-    gsap.to(bottle.current, {
-      scrollTrigger: {
-        trigger: bottle.current,
-        start: "top+=1500 20%",
-        end: "bottom+=1750 center",
-        scrub: true,
-        onUpdate: (self) => {
-          if (!bottle?.current) return;
-      
-          if (self.progress > 0.99) {
-            setFlavorSrc('/green-bottle.png');
-          } else {
-            setFlavorSrc('/blue-bottle.png');
-          }
-        },
-      },
-      scale: 0.05,
-      duration: 2,
-      ease: "power1.inOut"
-    });
+    flavors.forEach((flavor, index) => {
+      const nextFlavor = flavors[index + 1];
     
-      
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: `#flavor-${index}`,
+          start: index === 0 ? "top+=600 20%" : "top+=1600 20%",
+          end: index === 0 ? "bottom+=1300 center" : "bottom+=1600 center",
+          scrub: true,
+          id: `flavor-${index}`,
+          onUpdate: (self) => {
+            if (self.direction === 1 && self.progress >= 0.5) {
+              if (nextFlavor) {
+                setFlavorSrc(nextFlavor.bottleImage);
+              }
+            }
+
+            if (self.direction === -1 && self.progress < 0.5) {
+                setFlavorSrc(flavor.bottleImage);
+            }
+          },
+        },
+      });
+    
+      tl.to("#bottle", {
+        scale: 0.05,
+        duration: 1,
+        ease: "power1.inOut",
+      });
+    
+      tl.to("#bottle", {
+        scale: 1,
+        duration: 1,
+        ease: "power1.inOut",
+      });
+    });
+
 }

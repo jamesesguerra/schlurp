@@ -22,7 +22,14 @@ const Hero = () => {
 
       <section className="space-y-[400px]">
         { flavors.map((flavor, index) => {
-            return (<FlavorShowcase isFirst={index === 0} flavor={flavor} key={index} />)
+            return (
+              <FlavorShowcase
+                isFirst={index === 0}
+                flavor={flavor}
+                key={index}
+                index={index}
+              />
+            )
           })
         }
       </section>
