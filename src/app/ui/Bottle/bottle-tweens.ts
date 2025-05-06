@@ -75,7 +75,6 @@ export function bottleMobileAnimations(
           end: index === 0 ? "bottom+=1300 center" : "bottom+=1600 center",
           scrub: true,
           id: `flavor-${index}`,
-          markers: true,
           onUpdate: (self) => {
             if (self.direction === 1 && self.progress >= 0.5) {
               if (nextFlavor) {
