@@ -27,7 +27,7 @@ export const flavors: Flavor[] = [
         paragraphOne: "Your taste buds will be thanking you the second the dark chocolate hits your tongue. And when the salted almonds set in - they will simply never be the same again",
         paragraphTwoTitle: "SWEET & SALTY = <br /> YIN AND YANG.",
         paragraphTwo: "Dark chocolate 60% with salted almonds, known for their superb quality. The salty hint and the fruity chocolate truly make this the best of both worlds.",
-        paragraphThreeTitle: "40 G. OF MATCHA <br /> WITH WHITE CHOCOLATE CHUNKS <br /> AND PISTACHIO CRUNCH",
+        paragraphThreeTitle: "40 G. OF MATCHA <br /> WITH WHITE CHUNKS <br /> AND PISTACHIO CRUNCH",
     },
     {
         name: "Lemon Bites",

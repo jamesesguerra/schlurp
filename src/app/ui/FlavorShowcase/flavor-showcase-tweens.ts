@@ -134,7 +134,6 @@ export function flavorMobileAnimations(
         pinSpacing: false,
         pin: flavorBannerCopy.current,
         scrub: true,
-        markers: true,
         id: `${Math.random()}`,
       },
     });
