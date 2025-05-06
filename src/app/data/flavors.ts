@@ -16,7 +16,7 @@ export const flavors: Flavor[] = [
         paragraphThreeTitle: "40 G. OF DARK <br /> CHOCOLATE 60% <br /> WITH SALTED ALMONDS",
     },
     {
-        name: "Mint Swirls",
+        name: "Mint Swirl",
         bannerColor: "#699696",
         bannerColorLight: "#90b2b2",
         bannerAccentColor: "#b9f8cf",
