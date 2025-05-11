@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Navbar from "./layout/Navbar/Navbar";
 import "./globals.css"; 
-import { bebas, garamond } from "./fonts/fonts";
+import { bebas, garamond, slab } from "./fonts/fonts";
 import MobileNavbar from "./layout/MobileNavbar/MobileNavbar";
 
 export const metadata: Metadata = {
@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
       </head>
-      <body className={`antialiased ${bebas.variable} ${garamond.variable}`}>
+      <body className={`antialiased ${bebas.variable} ${garamond.variable} ${slab.variable}`}>
         <span className="hidden lg:block">
           <Navbar />
         </span>

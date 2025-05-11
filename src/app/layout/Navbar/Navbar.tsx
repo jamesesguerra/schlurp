@@ -12,7 +12,7 @@ const Navbar = () => {
         <span className="font-serif font-bold text-3xl">Simply Chocolate</span>
       </div>
 
-      <div className={`right-25 top-0 fixed font-accent text-2xl underline underline-offset-3 text-right ${styles.links} ${styles.textWhite}`}>
+      <div className={`right-5 top-0 fixed font-accent text-2xl underline underline-offset-3 text-right ${styles.links} ${styles.textWhite}`}>
         <ul>
           <li>
             <a href="">SHOP</a>
@@ -29,7 +29,7 @@ const Navbar = () => {
         </ul>
       </div>
 
-      <div className={`right-25 top-0 fixed font-accent text-2xl underline underline-offset-3 text-right ${styles.links} ${styles.textBlack}`}>
+      <div className={`right-5 top-0 fixed font-accent text-2xl underline underline-offset-3 text-right ${styles.links} ${styles.textBlack}`}>
         <ul>
           <li>
             <a href="">SHOP</a>
