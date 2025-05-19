@@ -12,7 +12,6 @@ export function bottleDesktopAnimations(
   }
 ) {
     const { bottleContainer, bottle, setFlavorSrc } = refs;
-    const tl = gsap.timeline();
 
     gsap.to(bottleContainer.current, {
         scrollTrigger: {
@@ -24,24 +23,75 @@ export function bottleDesktopAnimations(
         y: -75
     });
 
-    gsap.to(bottle.current, {
-      scrollTrigger: {
-        trigger: bottle.current,
-        start: "top+=1500 20%",
-        end: "bottom+=1400 center",
-        scrub: true,
-        onUpdate: (self) => {
-          if (!bottle?.current) return;
-      
-          if (self.progress > 0.99) {
-            setFlavorSrc('/green-bottle.png');
-          } else {
-            setFlavorSrc('/blue-bottle.png');
-          }
+    flavors.forEach((flavor, index) => {
+      const nextFlavor = flavors[index + 1];
+    
+      const shrinkTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: `#flavor-${index}`,
+          start: index === 0 ? "top+=1000 20%" : "top+=1600 20%",
+          end: index === 0 ? "bottom+=1600 center" : "bottom+=1600 center",
+          scrub: true,
+          id: `flavor-${index}`,
+          onUpdate: (self) => {
+            if (self.direction === 1 && self.progress >= 0.8) {
+              if (nextFlavor) {
+                setFlavorSrc(nextFlavor.bottleImage);
+              }
+            }
+
+            if (self.direction === -1 && self.progress < 0.8) {
+                setFlavorSrc(flavor.bottleImage);
+            }
+          },
         },
-      },
-      scale: 0.05,
-      ease: "power1.inOut"
+      });
+    
+      shrinkTl.to("#bottle", {
+        scale: 0.05,
+        duration: 1,
+        ease: "power1.inOut"
+      });
+
+      shrinkTl.set("#bottle", {
+        opacity: 1,
+        scale: 1,
+        y: "100vh"
+      });
+    
+      if (index !== 0) {
+        const reentryTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: `#banner-${index}`,
+            start: 'top-=200 top',
+            end: 'bottom-=100 center',
+            scrub: true,
+          },
+        });
+
+        reentryTl.to("#bottle", {
+          y: 0,
+          duration: 1,
+          ease: "power1.inOut"
+        });
+
+        gsap.to(`#banner-${index}`, {
+          scrollTrigger: {
+            trigger: `#banner-${index}`,
+            start: `top-=450 top`,
+            end: 'bottom center',
+            scrub: true,
+            onEnter: () => {
+              gsap.set('#bottle', { opacity: 0 })
+            },
+            onLeaveBack: () => {
+              gsap.set('#bottle', { opacity: 1 })
+            }
+          },
+          zIndex: 0
+        });
+      }
+
     });
 }
 
@@ -53,7 +103,6 @@ export function bottleMobileAnimations(
   }
 ) {
     const { bottleContainer, bottle, setFlavorSrc } = refs;
-    const tl = gsap.timeline();
 
     gsap.to(bottleContainer.current, {
         scrollTrigger: {

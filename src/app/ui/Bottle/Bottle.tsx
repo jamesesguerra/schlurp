@@ -20,7 +20,6 @@ const Bottle = () => {
     (context) => {
       const mm = gsap.matchMedia();
 
-      // Defer animations until DOM is fully mounted
       requestAnimationFrame(() => {
         mm.add("(max-width: 1023px)", () => {
           bottleMobileAnimations({ bottleContainer, bottle, setFlavorSrc });
@@ -30,10 +29,10 @@ const Bottle = () => {
           bottleDesktopAnimations({ bottleContainer, bottle, setFlavorSrc });
         });
 
-        ScrollTrigger.refresh(); // ensure ScrollTrigger recalculates positions
+        ScrollTrigger.refresh(); 
       });
 
-      return () => mm.revert(); // clean up on unmount
+      return () => mm.revert();
     },
     { scope: containerRef, revertOnUpdate: true }
   );

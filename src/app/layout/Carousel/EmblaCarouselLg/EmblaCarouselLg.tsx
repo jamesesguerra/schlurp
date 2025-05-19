@@ -6,7 +6,6 @@ import { DotButton, useDotButton } from '../EmblaCarouselLg/EmblaCarouselDotButt
 import Autoplay from 'embla-carousel-autoplay'
 import useEmblaCarousel from 'embla-carousel-react'
 import './embla-lg.css';
-import Image from 'next/image';
 
 type PropType = {
   slides: number[]
