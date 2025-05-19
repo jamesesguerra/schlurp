@@ -50,28 +50,6 @@ const MobileNavbar = () => {
   })
 
   return (
-    // <nav className="container mx-auto px-5 py-5">
-    //   <div className="flex justify-between items-center">
-    //     <span className="tracking-tight md:tracking-normal font-serif font-bold text-3xl">Simply Chocolate</span>
-
-    //     <div>
-    //       <svg
-    //         xmlns="http://www.w3.org/2000/svg"
-    //         fill="none"
-    //         viewBox="0 0 24 24"
-    //         strokeWidth="1.5"
-    //         stroke="currentColor"
-    //         className="size-8"
-    //       >
-    //         <path
-    //           strokeLinecap="round"
-    //           strokeLinejoin="round"
-    //           d="M3.75 9h16.5m-16.5 6.75h16.5"
-    //         />
-    //       </svg>
-    //     </div>
-    //   </div>
-    // </nav>
     <div className="menu-container" ref={container}>
       <div className="menu-bar">
         <div className="menu-logo">
@@ -129,21 +107,17 @@ const MobileNavbar = () => {
             ))}
           </div>
 
-          <div className="menu-info">
+          <div className="menu-info pb-20">
             <div className="menu-info-col text-white">
               <a href="">Facebook &#8599;</a>
               <a href="">Instagram &#8599;</a>
               <a href="">X &#8599;</a>
               <a href="">LinkedIn &#8599;</a>
             </div>
-            <div className="menu-info-col text-white">
-              <p>info@schlurp.com</p>
-              <p>2134 234 213</p>
-            </div>
           </div>
         </div>
 
-        <div className="menu-preview text-white">
+        <div className="menu-preview text-white pb-20">
           <p>View Showreel</p>
         </div>
       </div>
