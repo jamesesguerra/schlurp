@@ -31,19 +31,12 @@
     clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
 }
 
-.menu-close-icon {
-    flex: 2;
-    display: flex;
-    align-items: flex-end;
-    cursor: pointer;
-}
-
 .menu-copy {
     flex: 4;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding-top: 2em;
+    padding-top: 8em;
 }
 
 .menu-preview {
@@ -70,7 +63,7 @@
 
 .menu-link-item-holder a {
     color: #fff;
-    font-size: 80px;
+    font-size: 60px;
     font-weight: 400;
     line-height: 90%;
 }
@@ -84,18 +77,4 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-}
-
-@media (max-width: 900px) {
-    .menu-close-icon {
-        display: none;
-    }
-
-    .menu-copy {
-        padding-top: 8em;
-    }
-
-    .menu-link-item-holder a {
-        font-size: 60px;
-    }
 }

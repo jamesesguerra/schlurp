@@ -90,10 +90,6 @@ const MobileNavbar = () => {
           </div>
         </div>
 
-        <div className="menu-close-icon">
-          <p>&#x2715;</p>
-        </div>
-
         <div className="menu-copy">
           <div className="menu-links">
             {menuLinks.map((link, index) => (
