@@ -50,7 +50,7 @@ const MobileNavbar = () => {
   })
 
   return (
-    <div className="menu-container" ref={container}>
+    <div className="menu-container navbar-container" ref={container}>
       <div className="menu-bar">
         <div className="menu-logo">
           <span className="tracking-tight md:tracking-normal font-serif font-bold text-3xl">Simply Chocolate</span>

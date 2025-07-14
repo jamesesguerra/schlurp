@@ -1,4 +1,11 @@
 .hero-container {
-    height: 80dvh;
+    height: 80svh;
     scroll-snap-align: start;
+}
+
+@media (min-width: 1024px) {
+  .hero-container {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
 }

@@ -1,5 +1,5 @@
 .flavor-container {
-    height: 60dvh;
+    height: 60svh;
     scroll-snap-align: start;
     scroll-snap-stop: always;
 }

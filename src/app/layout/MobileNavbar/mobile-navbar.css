@@ -78,3 +78,8 @@
     flex-direction: column;
     justify-content: flex-end;
 }
+
+.navbar-container {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
