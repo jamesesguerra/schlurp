@@ -22,6 +22,10 @@
   }
 }
 
+html {
+  scroll-snap-type: y mandatory;
+}
+
 body {
   background-color: var(--background);
 }

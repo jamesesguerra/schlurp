@@ -1,0 +1,48 @@
+animate 
+- add properties to animate from its current state -> state you add
+- animatable values:
+  - numbers (x and y positions)
+  - strings (margin, padding, height, width containing px)
+  - colors
+  - transforms (x, y, z, rotate, scale, skew, perspective)
+
+initial
+- manually set the initial state
+
+whileHover
+- animate properties when hovering
+
+whileTap
+- animate propeties while its being tapped
+
+whileInView
+- animate properties when the component enters the viewport
+
+scrollYProgress
+- link a value directly to scroll position
+
+layout
+- transforms
+- useful for content expansion, reordering items in a list, toggle layout between states, animating positions
+
+exit
+- wrap a motion div with Animatepresence to gain access to the exit prop, it animates the properties when that 
+  is motion.div is removed from the DOM
+
+transition
+- define own animations (override defaults like spring, duration)
+- sets the type of animation that will be used when the animation fires
+
+keyframes
+- like timeline, animates through a series of keyframes in sequence
+- set values in an array
+
+variants
+- named animations you can use them as labels
+- propagating variants to the children
+- orchestrating children (with stagger, when: before or after children)
+- passing functions as variants (for computing something first)
+
+
+
+
