@@ -7,6 +7,7 @@ const Motion = () => {
     <>
         <Hero />
         <Flavor />
+        <Flavor />
     </>
   );
 };

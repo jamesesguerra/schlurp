@@ -3,3 +3,8 @@
     scroll-snap-align: start;
     scroll-snap-stop: always;
 }
+
+.details-container {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
