@@ -1,44 +1,80 @@
+"use client";
 import "./flavor.css";
+import { motion } from "motion/react";
+import { Flavor } from "../types/Flavor";
+import Image from "next/image";
 
-const Flavor = () => {
+const FlavorShowcase = ({
+  flavor,
+  index,
+}: {
+  flavor: Flavor;
+  index: number;
+}) => {
   return (
-    <div className="relative">
-      <section className="bg-blue-800 flavor-container sticky top-0">
-        <div className="container mx-auto px-5 lg:px-0">
+    <div className="relative" id={`flavor-${index}`}>
+      <section
+        className="bg-blue-800 flavor-container sticky top-0"
+        style={{
+          backgroundImage: `linear-gradient(90deg,${flavor.bannerColor} 0%, ${
+            flavor.bannerColorLight ?? flavor.bannerColor
+          } 51%, ${flavor.bannerColor} 100%)`,
+        }}
+      >
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ amount: "all", once: true }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="container mx-auto px-5 lg:px-0"
+        >
           <p
             className="font-accent pt-6 text-5xl tracking-tight lg:tracking-wide text-white mb-5"
             dangerouslySetInnerHTML={{
-              __html:
-                "DARK CHOCOLATE <br /> 60% WITH SALTED <br /> ALMONDS <br />",
+              __html: flavor?.flavorDescription || "",
             }}
           />
 
-          <span className="font-accent text-2xl" style={{ color: "#00a6f4" }}>
+          <span
+            className="font-accent text-2xl"
+            style={{ color: flavor.bannerAccentColor }}
+          >
             2.55 PHP
           </span>
-        </div>
+          <div
+            className="flex justify-center items-center mt-10 w-[200px] h-[70px]"
+            style={{ border: `2px solid ${flavor.bannerAccentColor}` }}
+          >
+            <span
+              className="font-accent text-2xl"
+              style={{ color: flavor.bannerAccentColor }}
+            >
+              ADD TO BOX
+            </span>
+          </div>
+        </motion.div>
       </section>
 
-      <section className="sticky top-0 snap-start scroll-snap-stop h-[200vh] bg-white">
+      <section className="snap-start scroll-snap-stop bg-white relative">
         <div className="container mx-auto px-5 lg:px-0">
           <div
             className={`text-[10rem] lg:text-[18rem] font-accent font-semibold tracking-tight lg:tracking-wide lg:left-0`}
-            style={{ color: "#1348e5" }}
+            style={{ color: flavor.titleColor }}
           >
-            <h3>SALTY</h3>
-            <h3 className="-mt-20">FRED</h3>
+            <h3>{flavor.name.split(" ")[0]}</h3>
+            <h3 className="-mt-40">{flavor.name.split(" ")[1]}</h3>
           </div>
 
-          <div
-            className="flex flex-col lg:flex-row justify-center mx-auto lg:left-0 gap-15 lg:gap-45 details-container pt-10"
-          >
+          <div className="flex flex-col lg:flex-row justify-center mx-auto lg:left-0 gap-15 lg:gap-45 details-container h-[100svh] items-center">
             <div className="flex flex-col basis-1/2 gap-20">
               <div>
                 <h3 className="font-accent text-4xl font-bold pb-6">
                   SALTY FRED. RAISE THE BAR
                 </h3>
                 <p className="text-xl/8 font-serif tracking-tighter font-semibold">
-                  Your taste buds will be thanking you the second the dark chocolate hits your tongue. And when the salted almonds set in - they will simply never be the same again
+                  Your taste buds will be thanking you the second the dark
+                  chocolate hits your tongue. And when the salted almonds set in
+                  - they will simply never be the same again
                 </p>
               </div>
 
@@ -50,7 +86,9 @@ const Flavor = () => {
                   }}
                 />
                 <p className="text-xl/8 font-serif font-semibold">
-                  Dark chocolate 60% with salted almonds, known for their superb quality. The salty hint and the fruity chocolate truly make this the best of both worlds.
+                  Dark chocolate 60% with salted almonds, known for their superb
+                  quality. The salty hint and the fruity chocolate truly make
+                  this the best of both worlds.
                 </p>
               </div>
             </div>
@@ -59,7 +97,8 @@ const Flavor = () => {
               <h3
                 className="font-accent text-4xl font-bold tracking-tight lg:tracking-wide pb-6"
                 dangerouslySetInnerHTML={{
-                  __html: "40 G. OF DARK <br /> CHOCOLATE 60% <br /> WITH SALTED ALMONDS",
+                  __html:
+                    "40 G. OF DARK <br /> CHOCOLATE 60% <br /> WITH SALTED ALMONDS",
                 }}
               />
               <div className="flex flex-col gap-4">
@@ -108,9 +147,26 @@ const Flavor = () => {
             </div>
           </div>
         </div>
+
+        {/* <div className="absolute top-0">
+          <Image
+            width={4080}
+            height={3613}
+            alt=""
+            src="/choco-banner.png"
+            className="hidden lg:block"
+          />
+          <Image
+            width={2259}
+            height={4080}
+            alt=""
+            src="/choco-banner-mobile.png"
+            className="block lg:hidden"
+          />
+        </div> */}
       </section>
     </div>
   );
 };
 
-export default Flavor;
+export default FlavorShowcase;

@@ -94,6 +94,7 @@ const FlavorShowcase: React.FC<FlavorShowcaseProps> = ({ flavor, isFirst = false
                   ADD TO BOX
                 </span>
               </div>
+              
             </div>
           </div>
         </div>
