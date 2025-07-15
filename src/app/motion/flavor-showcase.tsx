@@ -75,9 +75,8 @@ const FlavorShowcase = ({
               <h3 className="-mt-20 lg:-mt-40">{flavor.name.split(" ")[1]}</h3>
             </div>
 
-            <motion.div
+            <div
               className="pt-10 lg:pt-0 flex flex-col lg:flex-row  mx-auto lg:left-0 gap-10 lg:gap-45 details-container h-[100svh] lg:items-center lg:justify-center"
-              style={{ y }}
             >
               <div className="flex flex-col basis-1/2 justify-around gap-10 lg:gap-20">
                 <div>
@@ -161,7 +160,7 @@ const FlavorShowcase = ({
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
 
           {/* <div className="absolute top-0">
