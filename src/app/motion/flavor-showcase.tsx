@@ -1,8 +1,13 @@
 "use client";
 import "./flavor.css";
-import { motion } from "motion/react";
+import { motion, MotionValue, useScroll, useTransform } from "motion/react";
 import { Flavor } from "../types/Flavor";
 import Image from "next/image";
+import { useRef } from "react";
+
+function useParallax(value: MotionValue<number>, distance: number) {
+    return useTransform(value, [0, 1], [-distance, distance])
+}
 
 const FlavorShowcase = ({
   flavor,
@@ -11,6 +16,10 @@ const FlavorShowcase = ({
   flavor: Flavor;
   index: number;
 }) => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref });
+  const y = useParallax(scrollYProgress, -100);
+
   return (
     <div className="relative" id={`flavor-${index}`}>
       <section
@@ -56,7 +65,7 @@ const FlavorShowcase = ({
       </section>
 
       <section className="sticky top-0 snap-start scroll-snap-stop bg-white">
-        <div className="relative">
+        <div className="relative" ref={ref}>
           <div className="container mx-auto px-5 lg:px-0 pb-20 lg:pb-0">
             <div
               className={`text-[8rem] lg:text-[18rem] font-accent font-semibold tracking-tight lg:tracking-wide lg:left-0`}
@@ -66,7 +75,10 @@ const FlavorShowcase = ({
               <h3 className="-mt-20 lg:-mt-40">{flavor.name.split(" ")[1]}</h3>
             </div>
 
-            <div className="pt-10 lg:pt-0 flex flex-col lg:flex-row  mx-auto lg:left-0 gap-10 lg:gap-45 details-container h-[100svh] lg:items-center lg:justify-center">
+            <motion.div
+              className="pt-10 lg:pt-0 flex flex-col lg:flex-row  mx-auto lg:left-0 gap-10 lg:gap-45 details-container h-[100svh] lg:items-center lg:justify-center"
+              style={{ y }}
+            >
               <div className="flex flex-col basis-1/2 justify-around gap-10 lg:gap-20">
                 <div>
                   <h3 className="font-accent text-2xl lg:text-4xl font-bold pb-2 lg:pb-6">
@@ -74,8 +86,8 @@ const FlavorShowcase = ({
                   </h3>
                   <p className="text-base lg:text-xl/8 font-serif tracking-tighter font-semibold">
                     Your taste buds will be thanking you the second the dark
-                    chocolate hits your tongue. And when the salted almonds set in
-                    - they will simply never be the same again
+                    chocolate hits your tongue. And when the salted almonds set
+                    in - they will simply never be the same again
                   </p>
                 </div>
 
@@ -87,9 +99,9 @@ const FlavorShowcase = ({
                     }}
                   />
                   <p className="text-base lg:text-xl/8 font-serif font-semibold">
-                    Dark chocolate 60% with salted almonds, known for their superb
-                    quality. The salty hint and the fruity chocolate truly make
-                    this the best of both worlds.
+                    Dark chocolate 60% with salted almonds, known for their
+                    superb quality. The salty hint and the fruity chocolate
+                    truly make this the best of both worlds.
                   </p>
                 </div>
               </div>
@@ -121,7 +133,9 @@ const FlavorShowcase = ({
                       <span className="font-serif font-semibold">
                         Saturated fat
                       </span>
-                      <p className="font-accent font-bold text-xl">40 G / 22 G</p>
+                      <p className="font-accent font-bold text-xl">
+                        40 G / 22 G
+                      </p>
                     </div>
 
                     <div className="basis-1/4">
@@ -135,7 +149,9 @@ const FlavorShowcase = ({
                       <span className="font-serif font-semibold">
                         Carbohydrates / of which sugar
                       </span>
-                      <p className="font-accent font-bold text-xl">39 G / 34 G</p>
+                      <p className="font-accent font-bold text-xl">
+                        39 G / 34 G
+                      </p>
                     </div>
 
                     <div className="basis-1/4">
@@ -145,27 +161,26 @@ const FlavorShowcase = ({
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
-          
-        <div className="absolute top-0">
-          <Image
-            width={4080}
-            height={3613}
-            alt=""
-            src="/choco-banner.png"
-            className="hidden lg:block"
-          />
-          <Image
-            width={2259}
-            height={4080}
-            alt=""
-            src="/choco-banner-mobile.png"
-            className="block lg:hidden"
-          />
-        </div>
-        </div>
 
+          {/* <div className="absolute top-0">
+            <Image
+              width={4080}
+              height={3613}
+              alt=""
+              src="/choco-banner.png"
+              className="hidden lg:block"
+            />
+            <Image
+              width={2259}
+              height={4080}
+              alt=""
+              src="/choco-banner-mobile.png"
+              className="block lg:hidden"
+            />
+          </div> */}
+        </div>
       </section>
     </div>
   );
