@@ -65,13 +65,13 @@ const FlavorShowcase = ({
             <h3 className="-mt-20 lg:-mt-40">{flavor.name.split(" ")[1]}</h3>
           </div>
 
-          <div className="pt-10 lg:pt-0 flex flex-col lg:flex-row  mx-auto lg:left-0 gap-15 lg:gap-45 details-container lg:h-[100svh] lg:items-center lg:justify-center">
-            <div className="flex flex-col basis-1/2 gap-10 lg:gap-20">
+          <div className="pt-10 lg:pt-0 flex flex-col lg:flex-row  mx-auto lg:left-0 gap-10 lg:gap-45 details-container h-[100svh] lg:items-center lg:justify-center">
+            <div className="flex flex-col basis-1/2 justify-around lg:gap-20">
               <div>
-                <h3 className="font-accent text-3xl lg:text-4xl font-bold pb-2 lg:pb-6">
+                <h3 className="font-accent text-2xl lg:text-4xl font-bold pb-2 lg:pb-6">
                   SALTY FRED. RAISE THE BAR
                 </h3>
-                <p className="text-xl/8 font-serif tracking-tighter font-semibold">
+                <p className="text-base font-serif tracking-tighter font-semibold">
                   Your taste buds will be thanking you the second the dark
                   chocolate hits your tongue. And when the salted almonds set in
                   - they will simply never be the same again
@@ -80,12 +80,12 @@ const FlavorShowcase = ({
 
               <div>
                 <h3
-                  className="font-accent text-3xl lg:text-4xl font-bold tracking-tight lg:tracking-wide pb-2 lg:pb-6"
+                  className="font-accent text-2xl lg:text-4xl font-bold tracking-tight lg:tracking-wide pb-2 lg:pb-6"
                   dangerouslySetInnerHTML={{
                     __html: "SWEET & SALTY = <br /> YIN AND YANG",
                   }}
                 />
-                <p className="text-xl/8 font-serif font-semibold">
+                <p className="text-base font-serif font-semibold">
                   Dark chocolate 60% with salted almonds, known for their superb
                   quality. The salty hint and the fruity chocolate truly make
                   this the best of both worlds.
@@ -95,7 +95,7 @@ const FlavorShowcase = ({
 
             <div className="basis-1/2">
               <h3
-                className="font-accent text-3xl lg:text-4xl font-bold tracking-tight lg:tracking-wide pb-2 lg:pb-6"
+                className="font-accent text-2xl lg:text-4xl font-bold tracking-tight lg:tracking-wide pb-2 lg:pb-6"
                 dangerouslySetInnerHTML={{
                   __html: "40 G. OF DARK <br /> AND WHITE CHOCOLATE",
                 }}
