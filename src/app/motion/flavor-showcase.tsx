@@ -55,7 +55,7 @@ const FlavorShowcase = ({
         </motion.div>
       </section>
 
-      <section className="snap-start scroll-snap-stop bg-white relative">
+      <section className="sticky top-0 snap-start scroll-snap-stop bg-white">
         <div className="container mx-auto px-5 lg:px-0 pb-20 lg:pb-0">
           <div
             className={`text-[8rem] lg:text-[18rem] font-accent font-semibold tracking-tight lg:tracking-wide lg:left-0`}
@@ -97,8 +97,7 @@ const FlavorShowcase = ({
               <h3
                 className="font-accent text-3xl lg:text-4xl font-bold tracking-tight lg:tracking-wide pb-2 lg:pb-6"
                 dangerouslySetInnerHTML={{
-                  __html:
-                    "40 G. OF DARK <br /> AND WHITE CHOCOLATE",
+                  __html: "40 G. OF DARK <br /> AND WHITE CHOCOLATE",
                 }}
               />
               <div className="flex flex-col gap-4">
