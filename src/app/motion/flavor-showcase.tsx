@@ -66,7 +66,7 @@ const FlavorShowcase = ({
           </div>
 
           <div className="pt-10 lg:pt-0 flex flex-col lg:flex-row  mx-auto lg:left-0 gap-10 lg:gap-45 details-container h-[100svh] lg:items-center lg:justify-center">
-            <div className="flex flex-col basis-1/2 justify-around lg:gap-20">
+            <div className="flex flex-col basis-1/2 justify-around gap-10 lg:gap-20">
               <div>
                 <h3 className="font-accent text-2xl lg:text-4xl font-bold pb-2 lg:pb-6">
                   SALTY FRED. RAISE THE BAR
