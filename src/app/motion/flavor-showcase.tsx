@@ -56,16 +56,16 @@ const FlavorShowcase = ({
       </section>
 
       <section className="snap-start scroll-snap-stop bg-white relative">
-        <div className="container mx-auto px-5 lg:px-0">
+        <div className="container mx-auto px-5 lg:px-0 pb-50 lg:pb-0">
           <div
             className={`text-[10rem] lg:text-[18rem] font-accent font-semibold tracking-tight lg:tracking-wide lg:left-0`}
             style={{ color: flavor.titleColor }}
           >
             <h3>{flavor.name.split(" ")[0]}</h3>
-            <h3 className="-mt-40">{flavor.name.split(" ")[1]}</h3>
+            <h3 className="-mt-20 lg:-mt-40">{flavor.name.split(" ")[1]}</h3>
           </div>
 
-          <div className="flex flex-col lg:flex-row justify-center mx-auto lg:left-0 gap-15 lg:gap-45 details-container h-[100svh] items-center">
+          <div className="pt-10 lg:pt-0 flex flex-col lg:flex-row  mx-auto lg:left-0 gap-15 lg:gap-45 details-container h-[100svh] lg:items-center lg:justify-center">
             <div className="flex flex-col basis-1/2 gap-20">
               <div>
                 <h3 className="font-accent text-4xl font-bold pb-6">
