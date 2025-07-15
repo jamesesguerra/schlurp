@@ -26,7 +26,7 @@ const FlavorShowcase = ({
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref });
   const y = useParallax(scrollYProgress, -150);
-  const y2 = useParallax(scrollYProgress, -200);
+  const y2 = useParallax(scrollYProgress, -250);
   const y3 = useParallax(scrollYProgress, -400);
 
   const parent: Variants = {
@@ -103,21 +103,17 @@ const FlavorShowcase = ({
       <section className="sticky top-0 snap-start scroll-snap-stop bg-white">
         <div className="relative" ref={ref}>
           <div className="container mx-auto px-5 lg:px-0 pb-20 lg:pb-0">
-            <motion.div
+            <div
               className={`text-[8rem] lg:text-[18rem] font-accent font-semibold tracking-tight lg:tracking-wide lg:left-0`}
               style={{ color: flavor.titleColor }}
-              variants={parent}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.5 }} // Optional: animation triggers once when 30% visible
             >
-              <motion.h3 variants={child} style={{ willChange: 'transform, opacity' }}>
+              <motion.h3 style={{ y: y2 }}>
                 {flavor.name.split(" ")[0]}
               </motion.h3>
-              <motion.h3 variants={child} style={{ willChange: 'transform, opacity' }} className="-mt-20 lg:-mt-50">
+              <motion.h3 style={{ y: y3 }} className="-mt-20 lg:-mt-50">
                 {flavor.name.split(" ")[1]}
               </motion.h3>
-            </motion.div>
+            </div>
 
             <div className="pt-10 lg:pt-0 flex flex-col lg:flex-row  mx-auto lg:left-0 gap-10 lg:gap-45 details-container h-[100svh] lg:items-center lg:justify-center">
               <div className="flex flex-col basis-1/2 justify-around gap-10 lg:gap-20">
