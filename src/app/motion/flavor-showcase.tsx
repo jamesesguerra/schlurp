@@ -25,18 +25,18 @@ const FlavorShowcase = ({
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ amount: "all", once: true }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+          transition={{ duration: 1, ease: "easeOut" }}
           className="container mx-auto px-5 lg:px-0"
         >
           <p
-            className="font-accent pt-6 text-5xl tracking-tight lg:tracking-wide text-white mb-5"
+            className="font-accent pt-6 text-4xl lg:text-5xl tracking-tight lg:tracking-wide text-white mb-5"
             dangerouslySetInnerHTML={{
               __html: flavor?.flavorDescription || "",
             }}
           />
 
           <span
-            className="font-accent text-2xl"
+            className="font-accent text-xl lg:text-2xl"
             style={{ color: flavor.bannerAccentColor }}
           >
             2.55 PHP
@@ -46,7 +46,7 @@ const FlavorShowcase = ({
             style={{ border: `2px solid ${flavor.bannerAccentColor}` }}
           >
             <span
-              className="font-accent text-2xl"
+              className="font-accent text-xl lg:text-2xl"
               style={{ color: flavor.bannerAccentColor }}
             >
               ADD TO BOX
