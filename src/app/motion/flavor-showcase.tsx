@@ -1,12 +1,19 @@
 "use client";
 import "./flavor.css";
-import { motion, MotionValue, useScroll, useTransform } from "motion/react";
+import {
+  motion,
+  MotionValue,
+  useScroll,
+  useSpring,
+  useTransform,
+  Variants,
+} from "motion/react";
 import { Flavor } from "../types/Flavor";
 import Image from "next/image";
 import { useRef } from "react";
 
 function useParallax(value: MotionValue<number>, distance: number) {
-    return useTransform(value, [0, 1], [-distance, distance])
+  return useTransform(value, [0, 1], [-distance, distance]);
 }
 
 const FlavorShowcase = ({
@@ -18,10 +25,39 @@ const FlavorShowcase = ({
 }) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref });
-  const y = useParallax(scrollYProgress, -100);
+  const y = useParallax(scrollYProgress, -150);
+  const y2 = useParallax(scrollYProgress, -200);
+  const y3 = useParallax(scrollYProgress, -400);
+
+  const parent: Variants = {
+    hidden: {
+      opacity: 1, // Parent stays visible
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+         ease: [0.25, 0.46, 0.45, 0.94],
+        staggerChildren: 0.2, // Stagger delay between children
+      },
+    },
+  };
+
+  const child: Variants = {
+    hidden: {
+      y: 300, // Start 50px below
+      opacity: 0
+    },
+    visible: {
+      y: 0, // End at natural position
+      opacity: 1,
+      transition: {
+        duration: 0.6, // Animation duration for each child
+      },
+    },
+  };
 
   return (
-    <div className="relative" id={`flavor-${index}`}>
+    <div className="relative" id={`flavor-${index}`} ref={ref}>
       <section
         className="bg-blue-800 flavor-container sticky top-0"
         style={{
@@ -67,17 +103,23 @@ const FlavorShowcase = ({
       <section className="sticky top-0 snap-start scroll-snap-stop bg-white">
         <div className="relative" ref={ref}>
           <div className="container mx-auto px-5 lg:px-0 pb-20 lg:pb-0">
-            <div
+            <motion.div
               className={`text-[8rem] lg:text-[18rem] font-accent font-semibold tracking-tight lg:tracking-wide lg:left-0`}
               style={{ color: flavor.titleColor }}
+              variants={parent}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.5 }} // Optional: animation triggers once when 30% visible
             >
-              <h3>{flavor.name.split(" ")[0]}</h3>
-              <h3 className="-mt-20 lg:-mt-40">{flavor.name.split(" ")[1]}</h3>
-            </div>
+              <motion.h3 variants={child} style={{ willChange: 'transform, opacity' }}>
+                {flavor.name.split(" ")[0]}
+              </motion.h3>
+              <motion.h3 variants={child} style={{ willChange: 'transform, opacity' }} className="-mt-20 lg:-mt-50">
+                {flavor.name.split(" ")[1]}
+              </motion.h3>
+            </motion.div>
 
-            <div
-              className="pt-10 lg:pt-0 flex flex-col lg:flex-row  mx-auto lg:left-0 gap-10 lg:gap-45 details-container h-[100svh] lg:items-center lg:justify-center"
-            >
+            <div className="pt-10 lg:pt-0 flex flex-col lg:flex-row  mx-auto lg:left-0 gap-10 lg:gap-45 details-container h-[100svh] lg:items-center lg:justify-center">
               <div className="flex flex-col basis-1/2 justify-around gap-10 lg:gap-20">
                 <div>
                   <h3 className="font-accent text-2xl lg:text-4xl font-bold pb-2 lg:pb-6">
@@ -163,7 +205,7 @@ const FlavorShowcase = ({
             </div>
           </div>
 
-          {/* <div className="absolute top-0">
+          <motion.div className="absolute top-0" style={{ y }}>
             <Image
               width={4080}
               height={3613}
@@ -178,7 +220,7 @@ const FlavorShowcase = ({
               src="/choco-banner-mobile.png"
               className="block lg:hidden"
             />
-          </div> */}
+          </motion.div>
         </div>
       </section>
     </div>
