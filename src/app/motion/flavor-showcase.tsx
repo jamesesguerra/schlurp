@@ -29,33 +29,6 @@ const FlavorShowcase = ({
   const y2 = useParallax(scrollYProgress, -250);
   const y3 = useParallax(scrollYProgress, -400);
 
-  const parent: Variants = {
-    hidden: {
-      opacity: 1, // Parent stays visible
-    },
-    visible: {
-      opacity: 1,
-      transition: {
-         ease: [0.25, 0.46, 0.45, 0.94],
-        staggerChildren: 0.2, // Stagger delay between children
-      },
-    },
-  };
-
-  const child: Variants = {
-    hidden: {
-      y: 300, // Start 50px below
-      opacity: 0
-    },
-    visible: {
-      y: 0, // End at natural position
-      opacity: 1,
-      transition: {
-        duration: 0.6, // Animation duration for each child
-      },
-    },
-  };
-
   return (
     <div className="relative" id={`flavor-${index}`} ref={ref}>
       <section
@@ -104,7 +77,7 @@ const FlavorShowcase = ({
         <div className="relative" ref={ref}>
           <div className="container mx-auto px-5 lg:px-0 pb-20 lg:pb-0">
             <div
-              className={`text-[7rem] lg:text-[18rem] font-accent font-semibold tracking-tight lg:tracking-wide lg:left-0`}
+              className={`text-[7rem] lg:text-[18rem] font-accent font-semibold tracking-tight lg:tracking-wide lg:left-0 pt-20`}
               style={{ color: flavor.titleColor }}
             >
               <motion.h3>
@@ -115,7 +88,7 @@ const FlavorShowcase = ({
               </motion.h3>
             </div>
 
-            <div className="pt-10 lg:pt-0 flex flex-col lg:flex-row  mx-auto lg:left-0 gap-10 lg:gap-45 details-container h-[100svh] lg:items-center lg:justify-center">
+            <div className="flex flex-col lg:flex-row  mx-auto lg:left-0 gap-10 lg:gap-45 details-container h-[100svh] lg:items-center lg:justify-center">
               <div className="flex flex-col basis-1/2 justify-around gap-10 lg:gap-20">
                 <div>
                   <h3 className="font-accent text-2xl lg:text-4xl font-bold pb-2 lg:pb-6">
