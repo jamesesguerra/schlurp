@@ -59,7 +59,7 @@ const FlavorShowcase = ({
   return (
     <div className="relative" id={`flavor-${index}`} ref={ref}>
       <section
-        className="bg-blue-800 flavor-container sticky top-0"
+        className="bg-blue-800 flavor-container sticky top-0 h-[60svh]"
         style={{
           backgroundImage: `linear-gradient(90deg,${flavor.bannerColor} 0%, ${
             flavor.bannerColorLight ?? flavor.bannerColor
@@ -100,17 +100,17 @@ const FlavorShowcase = ({
         </motion.div>
       </section>
 
-      <section className="sticky top-0 snap-start scroll-snap-stop bg-white">
+      <section className="sticky top-0 bg-white">
         <div className="relative" ref={ref}>
           <div className="container mx-auto px-5 lg:px-0 pb-20 lg:pb-0">
             <div
               className={`text-[8rem] lg:text-[18rem] font-accent font-semibold tracking-tight lg:tracking-wide lg:left-0`}
               style={{ color: flavor.titleColor }}
             >
-              <motion.h3 style={{ y: y2 }}>
+              <motion.h3>
                 {flavor.name.split(" ")[0]}
               </motion.h3>
-              <motion.h3 style={{ y: y3 }} className="-mt-20 lg:-mt-50">
+              <motion.h3 className="-mt-20 lg:-mt-50">
                 {flavor.name.split(" ")[1]}
               </motion.h3>
             </div>
