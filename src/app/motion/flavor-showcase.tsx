@@ -88,8 +88,8 @@ const FlavorShowcase = ({
               </motion.h3>
             </div>
 
-            <div className="flex flex-col lg:flex-row  mx-auto lg:left-0 gap-10 lg:gap-45 details-container h-[100svh] lg:items-center lg:justify-center">
-              <div className="flex flex-col basis-1/2 justify-around gap-10 lg:gap-20">
+            <div className="flex flex-col lg:flex-row mx-auto lg:left-0 gap-10 lg:gap-45 details-container pb-20 md:pb-40 md:h-auto">
+              <div className="flex flex-col gap-10 md:basis-1/2">
                 <div>
                   <h3 className="font-accent text-2xl lg:text-4xl font-bold pb-2 lg:pb-6">
                     SALTY FRED. RAISE THE BAR
@@ -116,7 +116,7 @@ const FlavorShowcase = ({
                 </div>
               </div>
 
-              <div className="basis-1/2">
+              <div className="md:basis-1/2">
                 <h3
                   className="font-accent text-2xl lg:text-4xl font-bold tracking-tight lg:tracking-wide pb-2 lg:pb-6"
                   dangerouslySetInnerHTML={{
