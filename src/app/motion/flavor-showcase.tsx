@@ -28,13 +28,13 @@ const FlavorShowcase = ({
     target: ref,
     offset: ["start end", "end center"], // [top of ref, position of viewport], [end of ref, position of viewport]
   });
-  const rawY = useParallax(scrollYProgress, -800);
+  const y = useParallax(scrollYProgress, -300);
 
-  const y = useSpring(rawY, {
-    stiffness: 60,
-    damping: 12,
-    mass: 0.5,
-  });
+  // const y = useSpring(rawY, {
+  //   stiffness: 60,
+  //   damping: 12,
+  //   mass: 0.5,
+  // });
 
   return (
     <div id={`flavor-${index}`} ref={ref}>
