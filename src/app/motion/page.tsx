@@ -2,6 +2,7 @@ import FlavorShowcase from './flavor-showcase';
 import Hero from './Hero';
 import './motion.css';
 import { flavors } from '../data/flavors';
+import Footer from '../components/layout/footer';
 
 const Motion = () => {
   return (
@@ -17,6 +18,7 @@ const Motion = () => {
             )
           })
         }
+        <Footer />
     </>
   );
 };
