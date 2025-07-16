@@ -104,7 +104,7 @@ const FlavorShowcase = ({
         <div className="relative" ref={ref}>
           <div className="container mx-auto px-5 lg:px-0 pb-20 lg:pb-0">
             <div
-              className={`text-[8rem] lg:text-[18rem] font-accent font-semibold tracking-tight lg:tracking-wide lg:left-0`}
+              className={`text-[7rem] lg:text-[18rem] font-accent font-semibold tracking-tight lg:tracking-wide lg:left-0`}
               style={{ color: flavor.titleColor }}
             >
               <motion.h3>
