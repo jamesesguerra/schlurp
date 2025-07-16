@@ -24,13 +24,20 @@ const FlavorShowcase = ({
   index: number;
 }) => {
   const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref });
-  const y = useParallax(scrollYProgress, -150);
-  const y2 = useParallax(scrollYProgress, -250);
-  const y3 = useParallax(scrollYProgress, -400);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end center"], // [top of ref, position of viewport], [end of ref, position of viewport]
+  });
+  const rawY = useParallax(scrollYProgress, -800);
+
+  const y = useSpring(rawY, {
+    stiffness: 60,
+    damping: 12,
+    mass: 0.5,
+  });
 
   return (
-    <div className="relative" id={`flavor-${index}`} ref={ref}>
+    <div id={`flavor-${index}`} ref={ref}>
       <section
         className="bg-blue-800 flavor-container sticky top-0 h-[60svh]"
         style={{
@@ -73,18 +80,18 @@ const FlavorShowcase = ({
         </motion.div>
       </section>
 
-      <section className="sticky top-0 bg-white">
-        <div className="relative" ref={ref}>
+      <section className="relative bg-white overflow-hidden">
+        <div>
           <div className="container mx-auto px-5 lg:px-0 pb-20 lg:pb-0">
             <div
               className={`text-[7rem] lg:text-[18rem] font-accent font-semibold tracking-tight lg:tracking-wide lg:left-0 pt-20`}
               style={{ color: flavor.titleColor }}
             >
-              <motion.h3>
-                {flavor.name.split(" ")[0]} 
-              </motion.h3>
+              <motion.h3>{flavor.name.split(" ")[0]}</motion.h3>
               <motion.h3 className="-mt-20 lg:-mt-50">
-                {flavor.name.split(" ").length > 1 ? flavor.name.split(" ")[1] : ""}
+                {flavor.name.split(" ").length > 1
+                  ? flavor.name.split(" ")[1]
+                  : ""}
               </motion.h3>
             </div>
 
@@ -173,24 +180,24 @@ const FlavorShowcase = ({
               </div>
             </div>
           </div>
-
-          {/* <motion.div className="absolute top-0" style={{ y }}>
-            <Image
-              width={4080}
-              height={3613}
-              alt=""
-              src="/choco-banner.png"
-              className="hidden lg:block"
-            />
-            <Image
-              width={2259}
-              height={4080}
-              alt=""
-              src="/choco-banner-mobile.png"
-              className="block lg:hidden"
-            />
-          </motion.div> */}
         </div>
+
+        <motion.div className="absolute top-0" style={{ y }}>
+          <Image
+            width={4080}
+            height={3613}
+            alt=""
+            src="/choco-banner.png"
+            className="hidden lg:block"
+          />
+          <Image
+            width={2259}
+            height={4080}
+            alt=""
+            src="/choco-banner-mobile.png"
+            className="block lg:hidden"
+          />
+        </motion.div>
       </section>
     </div>
   );
