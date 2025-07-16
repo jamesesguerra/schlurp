@@ -108,10 +108,10 @@ const FlavorShowcase = ({
               style={{ color: flavor.titleColor }}
             >
               <motion.h3>
-                {flavor.name.split(" ")[0]}
+                {flavor.name.split(" ")[0]} 
               </motion.h3>
               <motion.h3 className="-mt-20 lg:-mt-50">
-                {flavor.name.split(" ")[1]}
+                {flavor.name.split(" ").length > 1 ? flavor.name.split(" ")[1] : ""}
               </motion.h3>
             </div>
 
@@ -201,7 +201,7 @@ const FlavorShowcase = ({
             </div>
           </div>
 
-          <motion.div className="absolute top-0" style={{ y }}>
+          {/* <motion.div className="absolute top-0" style={{ y }}>
             <Image
               width={4080}
               height={3613}
@@ -216,7 +216,7 @@ const FlavorShowcase = ({
               src="/choco-banner-mobile.png"
               className="block lg:hidden"
             />
-          </motion.div>
+          </motion.div> */}
         </div>
       </section>
     </div>
