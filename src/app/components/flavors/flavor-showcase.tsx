@@ -22,12 +22,12 @@ const FlavorShowcase = ({
   flavor: Flavor;
   index: number;
 }) => {
-  // const ref = useRef(null);
-  // const { scrollYProgress } = useScroll({
-  //   target: ref,
-  //   offset: ["start end", "end center"], // [top of ref, position of viewport], [end of ref, position of viewport]
-  // });
-  // const y = useParallax(scrollYProgress, -300);
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end center"], // [top of ref, position of viewport], [end of ref, position of viewport]
+  });
+  const y = useParallax(scrollYProgress, -300);
 
   // const y = useSpring(rawY, {
   //   stiffness: 60,
@@ -36,9 +36,9 @@ const FlavorShowcase = ({
   // });
 
   return (
-    <div id={`flavor-${index}`}>
+    <div id={`flavor-${index}`} ref={ref}>
       <section
-        className="bg-blue-800 flavor-container h-[60svh]"
+        className="bg-blue-800 flavor-container sticky top-0 h-[60svh]"
         style={{
           backgroundImage: `linear-gradient(90deg,${flavor.bannerColor} 0%, ${
             flavor.bannerColorLight ?? flavor.bannerColor
@@ -181,7 +181,7 @@ const FlavorShowcase = ({
           </div>
         </div>
 
-        <div className="absolute top-0 will-change-transform">
+        <motion.div className="absolute top-0 will-change-transform" style={{ y }}>
           <Image
             width={1920}
             height={1000}
@@ -198,7 +198,7 @@ const FlavorShowcase = ({
             className="block lg:hidden"
             loading="lazy"
           />
-        </div>
+        </motion.div>
       </section>
     </div>
   );
