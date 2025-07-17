@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link';
 import './mobile-navbar.css'
-import { gsap } from 'gsap';
-import { useGSAP } from '@gsap/react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const MobileNavbar = () => {
   const menuLinks = [
@@ -14,43 +13,63 @@ const MobileNavbar = () => {
     { path: '/stores', label: 'Stores' },
   ];
 
-  const container = useRef(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const tl = useRef<gsap.core.Timeline | null>(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  useGSAP(() => {
-    gsap.set('.menu-link-item-holder', { y: 75 });
-
-    tl.current = gsap.timeline({ paused: true })
-      .to(".menu-overlay", {
-          duration: 1.25,
-          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-          ease: "power4.inOut",
-      })
-      .to(".menu-link-item-holder", {
-          y: 0,
-          duration: 1,
-          stagger: 0.1,
-          ease: "power4.inOut",
-          delay: -0.75
-      });
-  }, { scope: container });
-
-  useEffect(() => {
-    if (isMenuOpen) {
-      tl.current?.play();
-    } else {
-      tl.current?.reverse();
+  const overlayVariants = {
+    closed: {
+      clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
+      transition: {
+        duration: 1.25,
+        ease: [0.76, 0, 0.24, 1] as const // power4.inOut equivalent
+      }
+    },
+    open: {
+      clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+      transition: {
+        duration: 1.25,
+        ease: [0.76, 0, 0.24, 1] as const // power4.inOut equivalent
+      }
     }
-  })
+  };
+
+  const linkVariants = {
+    closed: {
+      y: 75,
+      transition: {
+        duration: 1,
+        ease: [0.76, 0, 0.24, 1] as const // power4.inOut equivalent
+      }
+    },
+    open: {
+      y: 0,
+      transition: {
+        duration: 1,
+        ease: [0.76, 0, 0.24, 1] as const // power4.inOut equivalent
+      }
+    }
+  };
+
+  const containerVariants = {
+    closed: {
+      transition: {
+        staggerChildren: 0.1,
+        staggerDirection: -1 as const
+      }
+    },
+    open: {
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.5
+      }
+    }
+  };
 
   return (
-    <div className="menu-container navbar-container" ref={container}>
+    <div className="menu-container navbar-container">
       <div className="menu-bar">
         <div className="menu-logo">
           <span className="tracking-tight md:tracking-normal font-semibold text-3xl text-gray-800">schlurp</span>
@@ -76,47 +95,67 @@ const MobileNavbar = () => {
         </div>
       </div>
 
-      <div className="menu-overlay text-black">
-        <div className="menu-overlay-bar">
-          <div className="menu-logo">
-            <span className="tracking-tight md:tracking-normal font-semibold text-3xl text-white">schlurp</span>
-          </div>
-          <div className="menu-close" onClick={toggleMenu}>
-            <div>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="white" className="size-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-              </svg>
-            </div>
-          </div>
-        </div>
-
-        <div className="menu-copy">
-          <div className="menu-links">
-            {menuLinks.map((link, index) => (
-              <div className="menu-link-item" key={index}>
-                <div className="menu-link-item-holder" onClick={toggleMenu}>
-                  <Link href={link.path} className="menu-link font-accent tracking-tight">
-                    { link.label }
-                  </Link>
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div 
+            className="menu-overlay text-black"
+            initial="closed"
+            animate="open"
+            exit="closed"
+            variants={overlayVariants}
+          >
+            <div className="menu-overlay-bar">
+              <div className="menu-logo">
+                <span className="tracking-tight md:tracking-normal font-semibold text-3xl text-white">schlurp</span>
+              </div>
+              <div className="menu-close" onClick={toggleMenu}>
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="white" className="size-6">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                  </svg>
                 </div>
               </div>
-            ))}
-          </div>
-
-          <div className="menu-info pb-20">
-            <div className="menu-info-col text-white">
-              <a href="">Facebook &#8599;</a>
-              <a href="">Instagram &#8599;</a>
-              <a href="">X &#8599;</a>
-              <a href="">LinkedIn &#8599;</a>
             </div>
-          </div>
-        </div>
 
-        <div className="menu-preview text-white pb-20">
-          <p>View Showreel</p>
-        </div>
-      </div>
+            <div className="menu-copy">
+              <motion.div 
+                className="menu-links"
+                variants={containerVariants}
+                initial="closed"
+                animate="open"
+                exit="closed"
+              >
+                {menuLinks.map((link, index) => (
+                  <div className="menu-link-item" key={index}>
+                    <motion.div 
+                      className="menu-link-item-holder" 
+                      onClick={toggleMenu}
+                      variants={linkVariants}
+                    >
+                      <Link href={link.path} className="menu-link font-accent tracking-tight">
+                        { link.label }
+                      </Link>
+                    </motion.div>
+                  </div>
+                ))}
+              </motion.div>
+
+              <div className="menu-info pb-20">
+                <div className="menu-info-col text-white">
+                  <a href="">Facebook &#8599;</a>
+                  <a href="">Instagram &#8599;</a>
+                  <a href="">X &#8599;</a>
+                  <a href="">LinkedIn &#8599;</a>
+                </div>
+              </div>
+            </div>
+
+            <div className="menu-preview text-white pb-20">
+              <p>View Showreel</p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
