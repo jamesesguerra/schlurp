@@ -183,11 +183,12 @@ const FlavorShowcase = ({
 
         <motion.div className="absolute top-0 will-change-transform" style={{ y }}>
           <Image
-            width={4080}
-            height={3613}
+            width={1920}
+            height={1000}
             alt=""
             src="/choco-banner.png"
             className="hidden lg:block"
+            loading="lazy"
           />
           <Image
             width={540}
@@ -195,6 +196,7 @@ const FlavorShowcase = ({
             alt=""
             src="/choco-banner-mobile.png"
             className="block lg:hidden"
+            loading="lazy"
           />
         </motion.div>
       </section>
