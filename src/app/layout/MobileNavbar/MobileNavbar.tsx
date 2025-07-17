@@ -53,10 +53,10 @@ const MobileNavbar = () => {
     <div className="menu-container navbar-container" ref={container}>
       <div className="menu-bar">
         <div className="menu-logo">
-          <span className="tracking-tight md:tracking-normal font-semibold text-3xl">schlurp</span>
+          <span className="tracking-tight md:tracking-normal font-semibold text-3xl text-gray-800">schlurp</span>
         </div>
 
-        <div className="menu-open" onClick={toggleMenu}>
+        <div className="menu-open text-gray-800" onClick={toggleMenu}>
           <div>
              <svg
               xmlns="http://www.w3.org/2000/svg"

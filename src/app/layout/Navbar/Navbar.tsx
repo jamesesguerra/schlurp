@@ -3,13 +3,13 @@ import styles from '@/app/layout/Navbar/navbar.module.css';
 
 const Navbar = () => {
   return (
-    <div>
-      <div className={`fixed ${styles.brandName} top-39 ${styles.textWhite}`}>
-        <span className="font-serif font-bold text-3xl">Simply Chocolate</span>
+    <div className="">
+      <div className={`fixed ${styles.brandName} top-13 ${styles.textWhite}`}>
+        <span className="font-semibold text-3xl">schlurp</span>
       </div>
 
-      <div className={`fixed ${styles.brandName} top-39 ${styles.textBlack}`}>
-        <span className="font-serif font-bold text-3xl">Simply Chocolate</span>
+      <div className={`fixed ${styles.brandName} top-13 ${styles.textBlack}`}>
+        <span className="font-semibold text-3xl">schlurp</span>
       </div>
 
       <div className={`right-5 top-0 fixed font-accent text-2xl underline underline-offset-3 text-right ${styles.links} ${styles.textWhite}`}>

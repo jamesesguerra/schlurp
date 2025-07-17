@@ -97,18 +97,18 @@ const FlavorShowcase = ({
 
             <div className="flex flex-col lg:flex-row mx-auto lg:left-0 gap-10 lg:gap-45 details-container pb-20 md:pb-40 md:h-auto">
               <div className="flex flex-col gap-10 md:basis-1/2">
-                <div>
-                  <h3 className="font-accent text-2xl lg:text-4xl font-bold pb-2 lg:pb-6">
+                <div className="text-gray-800">
+                  <h3 className="font-accent text-2xl lg:text-4xl font-bold pb-2 lg:pb-6 text-gray-800">
                     SALTY FRED. RAISE THE BAR
                   </h3>
-                  <p className="text-base lg:text-xl/8 font-serif tracking-tighter font-semibold">
+                  <p className="text-base lg:text-xl/8 font-serif tracking-tighter font-semibold text-gray-800">
                     Your taste buds will be thanking you the second the dark
                     chocolate hits your tongue. And when the salted almonds set
                     in - they will simply never be the same again
                   </p>
                 </div>
 
-                <div>
+                <div className="text-gray-800">
                   <h3
                     className="font-accent text-2xl lg:text-4xl font-bold tracking-tight lg:tracking-wide pb-2 lg:pb-6"
                     dangerouslySetInnerHTML={{
@@ -123,7 +123,7 @@ const FlavorShowcase = ({
                 </div>
               </div>
 
-              <div className="md:basis-1/2">
+              <div className="md:basis-1/2 text-gray-800">
                 <h3
                   className="font-accent text-2xl lg:text-4xl font-bold tracking-tight lg:tracking-wide pb-2 lg:pb-6"
                   dangerouslySetInnerHTML={{
