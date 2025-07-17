@@ -1,19 +1,27 @@
 "use client";
-
 import React, { useEffect } from 'react'
-import Hero from '../layout/Hero/Hero'
+import { flavors } from '../data/flavors';
+import FlavorShowcase from '../components/flavors/flavor-showcase';
+import Footer from '../components/layout/footer';
+import Hero from '../components/layout/hero';
 
 const LandingPage = () => {
-
-  useEffect(() => {
-
-  }, []);
-
   return (
     <>
         <Hero />
+        { flavors.map((flavor, index) => {
+            return (
+              <FlavorShowcase
+                flavor={flavor}
+                key={index}
+                index={index}
+              />
+            )
+          })
+        }
+        <Footer />
     </>
-  )
-}
+  );
+};
 
 export default LandingPage

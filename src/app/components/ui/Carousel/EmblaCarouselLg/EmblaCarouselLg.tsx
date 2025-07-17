@@ -2,7 +2,7 @@
 
 import React, { useCallback, useEffect, useRef } from 'react'
 import { EmblaOptionsType, EmblaCarouselType, EmblaEventType } from 'embla-carousel'
-import { DotButton, useDotButton } from '../EmblaCarouselLg/EmblaCarouselDotButton'
+import { DotButton, useDotButton } from './EmblaCarouselDotButton'
 import Autoplay from 'embla-carousel-autoplay'
 import useEmblaCarousel from 'embla-carousel-react'
 import './embla-lg.css';

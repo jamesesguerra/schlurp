@@ -1,5 +1,4 @@
 "use client";
-import "./flavor.css";
 import {
   motion,
   MotionValue,
@@ -8,7 +7,7 @@ import {
   useTransform,
   Variants,
 } from "motion/react";
-import { Flavor } from "../types/Flavor";
+import { Flavor } from "../../types/Flavor";
 import Image from "next/image";
 import { useRef } from "react";
 

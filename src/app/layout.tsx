@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Navbar from "./layout/Navbar/Navbar";
+import Navbar from "./components/layout/Navbar/Navbar";
 import "./globals.css"; 
 import { bebas, garamond, slab } from "./fonts/fonts";
-import MobileNavbar from "./layout/MobileNavbar/MobileNavbar";
+import MobileNavbar from "./components/layout/MobileNavbar/MobileNavbar";
 
 export const metadata: Metadata = {
   title: {
