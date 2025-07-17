@@ -53,7 +53,7 @@ const MobileNavbar = () => {
     <div className="menu-container navbar-container" ref={container}>
       <div className="menu-bar">
         <div className="menu-logo">
-          <span className="tracking-tight md:tracking-normal font-serif font-bold text-3xl">Simply Chocolate</span>
+          <span className="tracking-tight md:tracking-normal font-semibold text-3xl">schlurp</span>
         </div>
 
         <div className="menu-open" onClick={toggleMenu}>
@@ -79,7 +79,7 @@ const MobileNavbar = () => {
       <div className="menu-overlay text-black">
         <div className="menu-overlay-bar">
           <div className="menu-logo">
-            <span className="tracking-tight md:tracking-normal font-serif font-bold text-3xl text-white">Simply Chocolate</span>
+            <span className="tracking-tight md:tracking-normal font-semibold text-3xl text-white">schlurp</span>
           </div>
           <div className="menu-close" onClick={toggleMenu}>
             <div>
