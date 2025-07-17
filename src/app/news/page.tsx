@@ -1,6 +1,6 @@
-import EmblaCarouselLg from "../layout/Carousel/EmblaCarouselLg/EmblaCarouselLg";
+import EmblaCarouselLg from '../components/ui/Carousel/EmblaCarouselLg/EmblaCarouselLg';
 import { EmblaOptionsType } from 'embla-carousel';
-import EmblaCarouselSm from "../layout/Carousel/EmblaCarouselSm/EmblaCarouselSm";
+import EmblaCarouselSm from '../components/ui/Carousel/EmblaCarouselSm/EmblaCarouselSm';
 
 export default function News() {
 
