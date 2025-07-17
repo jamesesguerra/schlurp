@@ -38,7 +38,7 @@ const FlavorShowcase = ({
   return (
     <div id={`flavor-${index}`}>
       <section
-        className="bg-blue-800 flavor-container"
+        className="bg-blue-800 flavor-container h-[60svh]"
         style={{
           backgroundImage: `linear-gradient(90deg,${flavor.bannerColor} 0%, ${
             flavor.bannerColorLight ?? flavor.bannerColor
