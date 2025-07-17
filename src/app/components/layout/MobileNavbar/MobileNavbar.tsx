@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState } from 'react'
 import Link from 'next/link';
 import './mobile-navbar.css'
@@ -102,6 +101,7 @@ const MobileNavbar = () => {
             initial="closed"
             animate="open"
             exit="closed"
+            variants={overlayVariants}
           >
             <div className="menu-overlay-bar">
               <div className="menu-logo">
@@ -119,6 +119,7 @@ const MobileNavbar = () => {
             <div className="menu-copy">
               <motion.div 
                 className="menu-links"
+                variants={containerVariants}
                 initial="closed"
                 animate="open"
                 exit="closed"
@@ -128,6 +129,7 @@ const MobileNavbar = () => {
                     <motion.div 
                       className="menu-link-item-holder" 
                       onClick={toggleMenu}
+                      variants={linkVariants}
                     >
                       <Link href={link.path} className="menu-link font-accent tracking-tight">
                         { link.label }
