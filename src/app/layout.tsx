@@ -29,7 +29,7 @@ export default function RootLayout({
           <Navbar />
         </span>
         <span className="block lg:hidden">
-          <MobileNavbar />
+          {/* <MobileNavbar /> */}
         </span>
         {children}
       </body>
