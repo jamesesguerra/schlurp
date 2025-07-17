@@ -189,6 +189,9 @@ const FlavorShowcase = ({
             src="/choco-banner.png"
             className="hidden lg:block"
           />
+        </motion.div>
+
+        <div className="absolute top-0">
           <Image
             width={540}
             height={750}
@@ -196,7 +199,7 @@ const FlavorShowcase = ({
             src="/choco-banner-mobile.png"
             className="block lg:hidden"
           />
-        </motion.div>
+        </div>
       </section>
     </div>
   );
