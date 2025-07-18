@@ -1,0 +1,14 @@
+:root {
+  --bottle-peek: 470px;
+}
+
+.bottle {
+  top: calc(100vh - var(--bottle-peek));
+}
+
+
+@media (max-width: 768px) {
+  :root {
+    --bottle-peek: 60px;
+  }
+}

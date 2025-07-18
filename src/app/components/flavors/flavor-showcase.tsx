@@ -3,9 +3,7 @@ import {
   motion,
   MotionValue,
   useScroll,
-  useSpring,
   useTransform,
-  Variants,
 } from "motion/react";
 import { Flavor } from "../../types/Flavor";
 import Image from "next/image";
