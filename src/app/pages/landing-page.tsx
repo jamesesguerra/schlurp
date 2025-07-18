@@ -44,8 +44,6 @@ const LandingPage = () => {
 
 useEffect(() => {
   const unsubscribe = scrollYProgress.on("change", (progress) => {
-    console.log(progress);
-    
     // Clamp progress between 0 and 1
     const clampedProgress = Math.max(0, Math.min(1, progress));
     
@@ -57,6 +55,8 @@ useEffect(() => {
     
     // Update the flavor source if it's different
     const newFlavorSrc = flavors[safeIndex].bottleImage;
+    const newFlavorBanner = flavors[safeIndex].bannerImage;
+
     if (flavorSrc !== newFlavorSrc) {
       setFlavorSrc(newFlavorSrc);
     }
@@ -83,7 +83,6 @@ useEffect(() => {
           index={index}
         />
       ))}
-      <Footer />
     </div>
   );
 };

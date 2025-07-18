@@ -184,7 +184,7 @@ const FlavorShowcase = ({
             width={1920}
             height={1000}
             alt=""
-            src="/choco-banner.png"
+            src={`${flavor.bannerImage}.png`}
             className="hidden lg:block"
             loading="lazy"
           />
@@ -192,7 +192,7 @@ const FlavorShowcase = ({
             width={540}
             height={750}
             alt=""
-            src="/choco-banner-mobile.png"
+            src={`${flavor.bannerImage}-mobile.png`}
             className="block lg:hidden"
             loading="lazy"
           />

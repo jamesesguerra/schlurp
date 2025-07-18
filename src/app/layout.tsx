@@ -3,6 +3,7 @@ import Navbar from "./components/layout/Navbar/Navbar";
 import "./globals.css"; 
 import { bebas, garamond, slab } from "./fonts/fonts";
 import MobileNavbar from "./components/layout/MobileNavbar/MobileNavbar";
+import Footer from "./components/layout/footer";
 
 export const metadata: Metadata = {
   title: {
@@ -32,6 +33,7 @@ export default function RootLayout({
           <MobileNavbar />
         </span>
         {children}
+        <Footer />
       </body>
     </html>
   );

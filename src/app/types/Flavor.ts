@@ -5,6 +5,7 @@ export interface Flavor {
     backgroundImage?: string;
     bannerAccentColor?: string;
     bottleImage: string;
+    bannerImage: string;
     flavorDescription: string;
     titleColor: string;
     paragraphOneTitle?: string;
