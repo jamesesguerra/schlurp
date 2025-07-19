@@ -75,7 +75,9 @@ useEffect(() => {
   return (
     <div ref={containerRef}>
       <Hero ref={heroRef} />
-      <Bottle src={flavorSrc} y={bottleY}  />
+      <div className="hidden lg:block">
+        <Bottle src={flavorSrc} y={bottleY}  />
+      </div>
       {flavors.map((flavor, index) => (
         <FlavorShowcase
           flavor={flavor}

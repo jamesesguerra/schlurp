@@ -179,24 +179,25 @@ const FlavorShowcase = ({
           </div>
         </div>
 
-        <motion.div className="absolute top-0 will-change-transform" style={{ y }}>
+        <motion.div className="absolute top-0 will-change-transform hidden lg:block" style={{ y }}>
           <Image
             width={1920}
             height={1000}
             alt=""
             src={`${flavor.bannerImage}.png`}
-            className="hidden lg:block"
             loading="lazy"
           />
+        </motion.div>
+
+        <div className="absolute top-0 block lg:hidden">
           <Image
             width={540}
             height={750}
             alt=""
             src={`${flavor.bannerImage}-mobile.png`}
-            className="block lg:hidden"
             loading="lazy"
           />
-        </motion.div>
+        </div>
       </section>
     </div>
   );

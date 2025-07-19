@@ -6,7 +6,6 @@
   top: calc(100vh - var(--bottle-peek));
 }
 
-
 @media (max-width: 768px) {
   :root {
     --bottle-peek: 450px;
