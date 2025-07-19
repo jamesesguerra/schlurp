@@ -8,6 +8,7 @@ import {
 import { Flavor } from "../../types/Flavor";
 import Image from "next/image";
 import { useRef } from "react";
+import './flavor-showcase.css';
 
 function useParallax(value: MotionValue<number>, distance: number) {
   return useTransform(value, [0, 1], [-distance, distance]);
@@ -36,7 +37,7 @@ const FlavorShowcase = ({
   return (
     <div id={`flavor-${index}`} ref={ref}>
       <section
-        className="bg-blue-800 flavor-container sticky top-0 h-[60svh] will-change-transform"
+        className="bg-blue-800 flavor-container h-[60svh] will-change-transform"
         style={{
           backgroundImage: `linear-gradient(90deg,${flavor.bannerColor} 0%, ${
             flavor.bannerColorLight ?? flavor.bannerColor
