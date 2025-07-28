@@ -4,7 +4,7 @@ import { flavors } from "../data/flavors";
 import FlavorShowcase from "../components/flavors/flavor-showcase";
 import Hero from "../components/ui/hero/hero";
 import Bottle from "../components/ui/bottle/bottle";
-import { useScroll, useTransform } from "framer-motion";
+import { useScroll } from "framer-motion";
 
 const LandingPage = () => {
   const [flavorSrc, setFlavorSrc] = useState(flavors[0].bottleImage);
@@ -20,16 +20,27 @@ const LandingPage = () => {
 
   const [bottleScale, setBottleScale] = useState(1);
 
+  const [prevScrollY, setPrevScrollY] = useState(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const currentY = window.scrollY;
+      setPrevScrollY(currentY);
+    };
+
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [prevScrollY]);
+
+
   const handleScrollProgress = (progress: number, index: number) => {
     const overallProgress = scrollYProgress.get();
     const clampedProgress = Math.max(0, Math.min(1, overallProgress));
-    const adjustedProgress = Math.max(0, clampedProgress - 0.05); // Delay switch
+    const adjustedProgress = Math.max(0, clampedProgress - 0.03); // Delay switch
 
-    // Calculate which flavor should be active based on progress
     const activeFlavorIndex = Math.floor(adjustedProgress * flavors.length);
     const safeIndex = Math.min(activeFlavorIndex, flavors.length - 1);
 
-    // Update the flavor source if it's different
     const newFlavorSrc = flavors[safeIndex].bottleImage;
     if (flavorSrc !== newFlavorSrc) {
       setFlavorSrc(newFlavorSrc);
@@ -40,6 +51,11 @@ const LandingPage = () => {
       const scaleProgress = Math.min((progress - 0.6) / 0.4, 1);
       const newScale = 1 - scaleProgress;
       setBottleScale(newScale);
+    } 
+
+    const currentY = window.scrollY;
+    if ((currentY < prevScrollY) && progress <= 0.19) {
+      setBottleY(0);
     }
 
     // Handle bottle slide up animation (for non-first flavors)
