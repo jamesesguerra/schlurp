@@ -1,88 +1,70 @@
 "use client";
-import React, { useEffect, useState, useRef } from 'react';
-import { flavors } from '../data/flavors';
-import FlavorShowcase from '../components/flavors/flavor-showcase';
-import Footer from '../components/layout/footer';
-import Hero from '../components/ui/hero/hero';
-import Bottle from '../components/ui/bottle/bottle';
-import { useScroll, useTransform } from 'framer-motion';
-import { useParallax } from '../utils/parallax';
+import React, { useEffect, useState, useRef } from "react";
+import { flavors } from "../data/flavors";
+import FlavorShowcase from "../components/flavors/flavor-showcase";
+import Hero from "../components/ui/hero/hero";
+import Bottle from "../components/ui/bottle/bottle";
+import { useScroll, useTransform } from "framer-motion";
 
 const LandingPage = () => {
   const [flavorSrc, setFlavorSrc] = useState(flavors[0].bottleImage);
+  const [bottleY, setBottleY] = useState(0);
+
   const containerRef = useRef(null);
   const heroRef = useRef(null);
 
-  // Track scroll progress for the entire page
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
   });
 
-  // Map scroll progress to scale
-  // const scale = useTransform(scrollYProgress, (progress) => {
-  //   let currentScale = 1;
-  //   flavors.forEach((_, index) => {
-  //     const sectionStart = index / flavors.length;
-  //     const sectionEnd = (index + 1) / flavors.length;
-  //     const shrinkStart = sectionStart + 0.7; // Start shrinking 70% into the section
-  //     const shrinkEnd = sectionStart + 0.9; // End shrinking 90% into the section
+  const [bottleScale, setBottleScale] = useState(1);
 
-  //     if (progress >= shrinkStart && progress <= shrinkEnd) {
-  //       // Scale down from 1 to 0.05
-  //       currentScale = 1 - ((progress - shrinkStart) / (shrinkEnd - shrinkStart)) * 0.95;
-  //     } else if (progress > shrinkEnd && progress <= sectionEnd && index < flavors.length - 1) {
-  //       // Scale back up from 0.05 to 1 for the next section
-  //       currentScale = 0.05 + ((progress - shrinkEnd) / (sectionEnd - shrinkEnd)) * 0.95;
-  //     } else if (progress < shrinkStart && progress >= sectionStart) {
-  //       // Maintain or reset to scale 1 within the current section
-  //       currentScale = 1;
-  //     }
-  //   });
-  //   return Math.max(currentScale, 0.05); // Ensure scale doesn't go below 0.05
-  // });
+  const handleScrollProgress = (progress: number, index: number) => {
+    const overallProgress = scrollYProgress.get();
+    const clampedProgress = Math.max(0, Math.min(1, overallProgress));
+    const adjustedProgress = Math.max(0, clampedProgress - 0.05); // Delay switch
 
-useEffect(() => {
-  const unsubscribe = scrollYProgress.on("change", (progress) => {
-    // Clamp progress between 0 and 1
-    const clampedProgress = Math.max(0, Math.min(1, progress));
-    
     // Calculate which flavor should be active based on progress
-    const activeFlavorIndex = Math.floor(clampedProgress * flavors.length);
-    
-    // Handle edge case where progress is exactly 1
+    const activeFlavorIndex = Math.floor(adjustedProgress * flavors.length);
     const safeIndex = Math.min(activeFlavorIndex, flavors.length - 1);
-    
+
     // Update the flavor source if it's different
     const newFlavorSrc = flavors[safeIndex].bottleImage;
-    const newFlavorBanner = flavors[safeIndex].bannerImage;
-
     if (flavorSrc !== newFlavorSrc) {
       setFlavorSrc(newFlavorSrc);
     }
-  });
 
-  return () => unsubscribe();
-}, [scrollYProgress, flavorSrc, flavors]);
+    // Handle bottle scaling animation
+    if (progress >= 0.6 && progress <= 1.0) {
+      const scaleProgress = Math.min((progress - 0.6) / 0.4, 1);
+      const newScale = 1 - scaleProgress;
+      setBottleScale(newScale);
+    }
 
-   const { scrollYProgress: heroScrollProgress } = useScroll({
-      target: containerRef,
-      offset: ["start end", "end center"],  // [top of ref, position of viewport], [end of ref, position of viewport]
-    });
-
-    const bottleY = useTransform(heroScrollProgress, [0, 1], [0,  -250]);
+    // Handle bottle slide up animation (for non-first flavors)
+    if (progress >= 0.2 && progress <= 0.4 && index !== 0) {
+      const slideUpProgress = Math.min((progress - 0.2) / 0.2, 1); // 0 → 1 from 0.2 → 0.4
+      const newY = 1000 - slideUpProgress * 1000; // 1000 → 0
+      setBottleY(newY);
+      setBottleScale(1); // fully visible again
+    }
+  };
 
   return (
     <div ref={containerRef}>
       <Hero ref={heroRef} />
       <div className="hidden lg:block">
-        <Bottle src={flavorSrc} y={bottleY}  />
+        <Bottle src={flavorSrc} y={bottleY} scale={bottleScale} />
       </div>
       {flavors.map((flavor, index) => (
         <FlavorShowcase
           flavor={flavor}
           key={index}
           index={index}
+          onScrollProgress={(progress: number) =>
+            handleScrollProgress(progress, index)
+          }
         />
       ))}
     </div>

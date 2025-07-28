@@ -3,11 +3,11 @@ import React from "react";
 import "./bottle.css";
 import { motion } from "motion/react";
 
-const Bottle = ({ src, y }: { src: any; y: any }) => {
+const Bottle = ({ src, y, scale }: { src: any; y: any, scale: any }) => {
   return (
     <motion.div
-      className="fixed bottle left-1/2 -translate-x-1/2 z-20 perspective-dramatic"
-      style={{ y }}
+      className="fixed bottle left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 perspective-dramatic"
+      style={{ scale, y }}
     >
       <Image
         src={src}

@@ -7,7 +7,7 @@ import {
 } from "motion/react";
 import { Flavor } from "../../types/Flavor";
 import Image from "next/image";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import './flavor-showcase.css';
 
 function useParallax(value: MotionValue<number>, distance: number) {
@@ -17,25 +17,25 @@ function useParallax(value: MotionValue<number>, distance: number) {
 const FlavorShowcase = ({
   flavor,
   index,
+  onScrollProgress
 }: {
   flavor: Flavor;
   index: number;
+  onScrollProgress: any;
 }) => {
-  const ref = useRef(null);
+  const flavorRef = useRef(null);
   const { scrollYProgress } = useScroll({
-    target: ref,
+    target: flavorRef,
     offset: ["start end", "end center"], // [top of ref, position of viewport], [end of ref, position of viewport]
   });
   const y = useParallax(scrollYProgress, -300);
 
-  // const y = useSpring(rawY, {
-  //   stiffness: 60,
-  //   damping: 12,
-  //   mass: 0.5,
-  // });
+  useEffect(() => {
+    return scrollYProgress.on('change', onScrollProgress);
+  }, [scrollYProgress, onScrollProgress]);
 
   return (
-    <div id={`flavor-${index}`} ref={ref}>
+    <div id={`flavor-${index}`} ref={flavorRef}>
       <section
         className="bg-blue-800 flavor-container h-[60svh] will-change-transform"
         style={{
@@ -93,7 +93,7 @@ const FlavorShowcase = ({
               </motion.h3>
             </div>
 
-            <div className="flex flex-col lg:flex-row mx-auto lg:left-0 gap-10 lg:gap-45 details-container pb-20 md:pb-40 md:h-auto">
+            <div className="flex flex-col lg:flex-row mx-auto lg:left-0 gap-10 lg:gap-45 details-container pb-10 md:pb-40 md:h-auto">
               <div className="flex flex-col gap-10 md:basis-1/2">
                 <div className="text-gray-800">
                   <h3 className="font-accent text-2xl lg:text-4xl font-bold pb-2 lg:pb-6 text-gray-800">
@@ -106,6 +106,9 @@ const FlavorShowcase = ({
                   </p>
                 </div>
 
+              </div>
+
+              <div className="md:basis-1/2 text-gray-800">
                 <div className="text-gray-800">
                   <h3
                     className="font-accent text-2xl lg:text-4xl font-bold tracking-tight lg:tracking-wide pb-2 lg:pb-6"
@@ -120,70 +123,14 @@ const FlavorShowcase = ({
                   </p>
                 </div>
               </div>
-
-              <div className="md:basis-1/2 text-gray-800">
-                <h3
-                  className="font-accent text-2xl lg:text-4xl font-bold tracking-tight lg:tracking-wide pb-2 lg:pb-6"
-                  dangerouslySetInnerHTML={{
-                    __html: "40 G. OF DARK <br /> AND WHITE CHOCOLATE",
-                  }}
-                />
-                <div className="flex flex-col gap-4">
-                  <div className="flex">
-                    <div className="basis-3/4">
-                      <span className="font-serif font-semibold">Energy</span>
-                      <p className="font-accent font-bold text-xl">
-                        2330 KJ / 567 KCAL
-                      </p>
-                    </div>
-
-                    <div className="basis-1/4">
-                      <span className="font-serif font-semibold">Fibre</span>
-                      <p className="font-accent font-bold text-xl">9.2 G</p>
-                    </div>
-                  </div>
-
-                  <div className="flex">
-                    <div className="basis-3/4">
-                      <span className="font-serif font-semibold">
-                        Saturated fat
-                      </span>
-                      <p className="font-accent font-bold text-xl">
-                        40 G / 22 G
-                      </p>
-                    </div>
-
-                    <div className="basis-1/4">
-                      <span className="font-serif font-semibold">Protein</span>
-                      <p className="font-accent font-bold text-xl">7.2 G</p>
-                    </div>
-                  </div>
-
-                  <div className="flex">
-                    <div className="basis-3/4">
-                      <span className="font-serif font-semibold">
-                        Carbohydrates / of which sugar
-                      </span>
-                      <p className="font-accent font-bold text-xl">
-                        39 G / 34 G
-                      </p>
-                    </div>
-
-                    <div className="basis-1/4">
-                      <span className="font-serif font-semibold">Salt</span>
-                      <p className="font-accent font-bold text-xl">0.24 G</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
 
         <motion.div className="absolute top-0 will-change-transform hidden lg:block" style={{ y }}>
           <Image
-            width={1920}
-            height={1000}
+            width={2880}
+            height={1500}
             alt=""
             src={`${flavor.bannerImage}.png`}
             loading="lazy"

@@ -7,7 +7,7 @@ export const flavors: Flavor[] = [
         bannerColorLight: "oklch(75% 0.183 55.934)",
         bannerAccentColor: "oklch(95.4% 0.038 75.164)",
         bottleImage: "/assam.png",
-        bannerImage: "/choco-banner",
+        bannerImage: "/tea-bits",
         titleColor: "oklch(75% 0.183 55.934)",
         flavorDescription: "BLACK TEA <br /> WITH RICH ASSAM <br /> AND CREAMY MILK <br />",
         paragraphOneTitle: "SALTY FRED. RAISE THE BAR",
